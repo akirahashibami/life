@@ -10,7 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_02_072152) do
+ActiveRecord::Schema.define(version: 2020_09_02_073739) do
+
+  create_table "comments", force: :cascade do |t|
+    t.string "user_id"
+    t.string "video_id"
+    t.text "comment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.string "user_id"
+    t.string "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "impressions", force: :cascade do |t|
     t.string "impressionable_type"
@@ -38,6 +53,20 @@ ActiveRecord::Schema.define(version: 2020_09_02_072152) do
     t.index ["user_id"], name: "index_impressions_on_user_id"
   end
 
+  create_table "likes", force: :cascade do |t|
+    t.string "user_id"
+    t.string "video_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.string "following_id"
+    t.string "follower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -53,6 +82,15 @@ ActiveRecord::Schema.define(version: 2020_09_02_072152) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "videos", force: :cascade do |t|
+    t.integer "user_id"
+    t.string "video"
+    t.string "title"
+    t.text "introduction"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end
