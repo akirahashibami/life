@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
     <title>LifeLog</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -10,6 +11,19 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div id="wrapper">
+      <header>
+        <%= link_to image_tag('1_Primary_logo_on_transparent_308x65.png'), root_path %>
+      </header>
+
+      <%= yield %>
+
+      <footer>
+        <section>
+          <h5>Copyright © akira hahsibami</h5>
+        </section>
+      </footer>
+      </div>
   </body>
+
 </html>

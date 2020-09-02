@@ -16,3 +16,45 @@
 
  @import "bootstrap";
  @import "font-awesome";
+
+
+
+
+ /*
+  ==========================  記述ここから  =====================================
+  ==========================  記述ここから  =====================================
+  ==========================  記述ここから  =====================================
+  */
+
+  #wrapper{
+    position: relative;
+    min-height: 100vh;
+  }
+
+
+  header{
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    z-index: 20;
+  }
+
+  footer{
+    height: 100px;
+    background-color: #333333;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    
+
+    section{
+      width: 100%;
+
+      h5{
+        color: #BBBBBB;
+        line-height: 100px;
+        text-align: center;
+        margin: 0;
+      }
+    }
+  }
