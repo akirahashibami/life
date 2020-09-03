@@ -1,0 +1,17 @@
+<div class="container">
+
+  <div class="row">
+    <h2>動画の編集画面</h2>
+  </div>
+
+  <div class="row">
+    <%= form_with model: @video, local: true do |f| %>
+      <video src="<%= rails_blob_path(@video.video) %>" type="video/mp4" controls></video> <br>
+      <p>タイトル <%= f.text_field :title %></p> <br>
+      <p>動画の説明 <%= f.text_area :introduction %></p>
+      <p>※ 10秒程度が動画の長さの目安です</p>
+      <%= f.submit %>
+    <% end %>
+    <%= link_to "キャンセル", videos_path %>
+  </div>
+</div>

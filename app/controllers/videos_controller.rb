@@ -1,33 +1,45 @@
 class VideosController < ApplicationController
 
   def new
-    # code
+    @video = Video.new
   end
 
   def create
-    # code
+    @video = Video.new(video_params)
+    @video.user_id = current_user.id
+    @video.save
+    redirect_to video_path(@video)
   end
 
   def show
-    # code
+    @video = Video.find(params[:id])
+    @user = current_user
   end
 
   def index
-    # code
+    @videos = Video.all
+    @user = current_user
   end
 
   def edit
-    # code
+    @video = Video.find(params[:id])
   end
 
   def update
-    # code
+    @video = Video.find(params[:id])
+    @video.update(video_params)
+    redirect_to @video
   end
 
   def destroy
-    # code
+    @video.find(params[:id])
+    @video.destroy
+    redirect_to user_path(current_user)
   end
 
   private
-  
+
+  def video_params
+    params.require(:video).permit(:title, :introduction, :video)
+  end
 end
