@@ -1,29 +1,60 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
-    <title>LifeLog</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+  <title>LifeLog</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-    <div id="wrapper">
-      <header>
-        <%= link_to image_tag('1_Primary_logo_on_transparent_308x65.png'), root_path %>
-      </header>
+<body>
+  <div id="wrapper">
+    <header>
 
-      <%= yield %>
+        <%= link_to root_path do  %>
+          <%= image_tag('1_Primary_logo_on_transparent_308x65.png') %>
+        <% end %>
 
-      <footer>
-        <section>
-          <h5>Copyright © akira hahsibami</h5>
-        </section>
-      </footer>
+      <div class="cp_fullscreenmenu">
+        <input class="toggle" type="checkbox" />
+        <div class="hamburger"><span></span></div>
+        <div class="menu">
+          <% if user_signed_in? %>
+          <div>
+            <ul>
+              <li><%= link_to "Top", root_path %></li>
+              <li><%= link_to "マイページ", user_path(current_user) %></li>
+              <li><%= link_to "ムービー 一覧", videos_path %></li>
+              <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+            </ul>
+          </div>
+          <% else %>
+          <div>
+            <ul>
+              <li><%= link_to "Top", root_path %></li>
+              <li><%= link_to "L/Logを始める", new_user_registration_path %></li>
+              <li><%= link_to "ログイン", new_user_session_path %></li>
+              <li><%= link_to "このサイトについて", variouses_about_path %></li>
+            </ul>
+          </div>
+          <% end %>
+        </div>
       </div>
-  </body>
+    </header>
+
+    <div class="yield">
+      <%= yield %>
+    </div>
+
+    <footer>
+      <section>
+        <h5>Copyright © akira hahsibami</h5>
+      </section>
+    </footer>
+  </div>
+</body>
 
 </html>

@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    # code
+    
   end
 
   def edit
@@ -33,5 +33,5 @@ class UsersController < ApplicationController
   end
 
   private
-  
+
 end
