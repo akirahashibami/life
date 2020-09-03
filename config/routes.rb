@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   get "variouses/about"       => "variouses#about"
 
   # ユーザーアクション
-  get "users/:id/follows"     => "users#follows"
-  get "users/:id/followers"   => "users#followers"
+  get "users/:id/videos"      => "users#videos" ,     as: "users_videos"
   get "users/withdraw"        => "users#withdraw"
   get "users/favorites"       => "users#favorites"
 
