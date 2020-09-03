@@ -1,0 +1,42 @@
+<div class="container">
+
+  <div class="row">
+    <div class="user-profile">
+      <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "no-img-human.png" %>
+      <%= @user.name %>
+    </div>
+    <div class="user-follower">
+      <%= link_to "フォロー数: ユーザー一覧へ", follows_user_relationships_path(@user) %>
+      <%= link_to "フォロワー数: ユーザー一覧へ", followers_user_relationships_path(@user) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <h4>最近投稿した動画</h4>
+    <%= link_to "一覧へ", users_videos_path, class: "btn btn-secondary" %>
+  </div>
+
+  <div class="row">
+    <% @videos.each do |video| %>
+      <div class="col-lg-3">
+        <video src="<%= rails_blob_path(video.video) %>" type="video/mp4"></video>
+        <%= video.title %>
+        <%= video.user.name %>
+        <%= video.created_at %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="row">
+    <h4>お気に入り動画</h4>
+    <%= link_to "一覧へ", users_favorites_path, class: "btn btn-secondary" %>
+  </div>
+
+  <div class="row">
+    <% @favorites_videos do |videos| %>
+      <%= video.title %>
+      <%= video.user.name %>
+      <%= video.created_at %>
+    <% end %>
+  </div>
+</div>

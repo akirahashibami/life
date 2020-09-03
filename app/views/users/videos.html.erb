@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+
+    <div class="col-lg-3">
+      <%= render partial: 'users/user_details', locals: { user: @user }  %>
+    </div>
+
+    <div class="col-lg-9">
+      <h2>ユーザー投稿動画一覧</h2>
+
+      <% @user_videos.each do |video| %>
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <%= link_to video_path(video) do %>
+                <div class="video">
+                  <video src="<%= rails_blob_path(video.video) %>" type="video/mp4"></video>
+                </div>
+              <% end %>
+            </div>
+            <div class="col-lg-6">
+              <%= attachment_image_tag video.user, :profile_image, size: "50x50", fallback: "no-img-human.png" %>
+              <%= video.introduction %>
+            </div>
+          </div>
+          <div class="row">
+            <%= link_to video.title %>
+            <%= video.created_at %>
+            <%# いいねとかが入る %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>
