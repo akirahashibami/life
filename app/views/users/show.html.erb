@@ -1,8 +1,8 @@
-<div class="container">
+<div id="show" class="container">
 
   <div class="row">
     <div class="user-profile">
-      <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "no-img-human.png" %>
+      <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "no-img-human.png" %> <br>
       <%= @user.name %>
     </div>
     <div class="user-follower">
@@ -19,10 +19,14 @@
   <div class="row">
     <% @videos.each do |video| %>
       <div class="col-lg-3">
-        <video src="<%= rails_blob_path(video.video) %>" type="video/mp4"></video>
+        <%= link_to video_path(video) do %>
+        <div class="video">
+          <video src="<%= rails_blob_path(video.video) %>"　width="640" height="360" type="video/mp4" allowfullscreen></video>
+        </div>
         <%= video.title %>
         <%= video.user.name %>
         <%= video.created_at %>
+        <% end %>
       </div>
     <% end %>
   </div>
@@ -33,10 +37,17 @@
   </div>
 
   <div class="row">
-    <% @favorites_videos do |videos| %>
-      <%= video.title %>
-      <%= video.user.name %>
-      <%= video.created_at %>
+    <% @favo_videos.each do |video| %>
+      <div class="col-lg-3">
+        <%= link_to video_path(video) do %>
+          <div class="video">
+            <video src="<%= rails_blob_path(video.video) %>"　width="640" height="360" type="video/mp4" allowfullscreen></video>
+          </div>
+          <%= video.title %>
+          <%= video.user.name %>
+          <%= video.created_at %>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>

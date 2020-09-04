@@ -21,6 +21,9 @@
               <div class="col-lg-6">
                 <%= attachment_image_tag video.user, :profile_image, size: "50x50", fallback: "no-img-human.png" %>
                 <%= video.introduction %>
+                <div id="favorites">
+                  <%= render partial: 'videos/favorites', locals: { video: video}  %>
+                </div>
               </div>
             </div>
             <div class="row">

@@ -1,0 +1,11 @@
+<% if video.liked_by?(current_user) %>
+  <%= link_to video_likes_path(video.id), methoo: :delete do %>
+    <%= icon('fas', 'heart') %>
+  <% end %>
+  <%= video.likes.count %>
+<% else %>
+  <%= link_to video_likes_path(video.id), method: :post do %>
+    <%= icon('far', 'heart') %>
+  <% end %>
+  <%= video.likes.count %>
+<% end %>

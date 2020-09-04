@@ -7,24 +7,51 @@
 
     <div class="col-xl-9">
       <% if @video.video.attached? %>
+
       <div class="row">
         <video src="<%= rails_blob_path(@video.video) %>" type="video/mp4" controls></video>
       </div>
+
       <div class="row">
         <%= @video.title %>
       </div>
-      <div class="row">
-        <!-- いいねやPV数 -->
+
+      <!-- いいねやPV数 -->
+      <div id="favorites" class="row">
+        <%= render partial: 'videos/likes', locals: { video: @video} %>
+        <%= render partial: 'videos/favorites', locals: { video: @video}  %>
       </div>
+
       <div class="row">
         <%= @video.introduction %>
       </div>
-      <div class="row">
-        <!-- コメント機能 -->
+
+      <!-- コメント機能 -->
+      <div class="comments row">
+        <h5>コメント</h5>
+        <%= form_with model: [@video, @comment] do |f| %>
+          <%= f.text_area :comment %>
+          <%= f.submit "コメントする" %>
+        <% end %>
       </div>
-      <div class="row">
-        <!-- 投稿コメント一覧 -->
-      </div>
+
+      <!-- 投稿コメント一覧 -->
+      <% @comments.each do |comment| %>
+        <div class="row">
+          <div class="col-lg-2">
+            <%= attachment_image_tag comment.user, :profile_image, size: "60x60", format: "jpeg"  %>
+          </div>
+          <div class="col-lg-10">
+            <%= comment.user.name %>
+            <%= comment.created_at %> <br>
+            <%= comment.comment %>
+            <% if comment.user == current_user %>
+              <%= link_to "コメントを削除", video_comment_path(comment.video, comment), method: :delete %>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+
       <% end %>
       <%= link_to "編集する", edit_video_path(@video), class: "btn btn-success" %>
       <%= link_to "動画の削除", video_path(@video), method: :delete, class: "btn btn-danger" %>
