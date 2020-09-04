@@ -17,11 +17,14 @@
               <video src="<%= rails_blob_path(video.video) %>"　width="640" height="360" type="video/mp4" allowfullscreen></video>
             </div>
             <div class="video-data">
-              <%= video.title %>
+              <%= video.title %> <br>
               <%# <%= video.user.profile_image %>
               <%= video.user.name %>
               <%= video.created_at %>
               <!-- いいねとかが入ります -->
+              <div id="likes">
+                <%= render partial: 'videos/likes', locals: { video: video} %>
+              </div>
             </div>
             <% end %>
           </div>

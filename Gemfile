@@ -84,4 +84,4 @@ gem 'rubocop'
 gem 'rubocop-rails'
 
 # フォントオーサム
-gem 'font-awesome-rails'
+gem 'font-awesome-sass'
