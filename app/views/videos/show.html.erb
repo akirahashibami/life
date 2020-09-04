@@ -27,6 +27,7 @@
       </div>
       <% end %>
       <%= link_to "編集する", edit_video_path(@video), class: "btn btn-success" %>
+      <%= link_to "動画の削除", video_path(@video), method: :delete, class: "btn btn-danger" %>
     </div>
   </div>
 </div>

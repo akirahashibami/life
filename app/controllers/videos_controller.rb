@@ -32,7 +32,7 @@ class VideosController < ApplicationController
   end
 
   def destroy
-    @video.find(params[:id])
+    @video = Video.find(params[:id])
     @video.destroy
     redirect_to user_path(current_user)
   end

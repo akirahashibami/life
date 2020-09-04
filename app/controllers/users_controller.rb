@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   def show
-    
+
   end
 
   def edit
@@ -17,18 +17,11 @@ class UsersController < ApplicationController
   end
 
   def videos
-    # code
+    @user = User.find(params[:id])
+    @user_videos = @user.videos
   end
 
   def withdraw
-    # code
-  end
-
-  def follows
-    # code
-  end
-
-  def followers
     # code
   end
 
