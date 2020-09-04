@@ -22,3 +22,11 @@
 #index{
   @include video;
 }
+
+#videos{
+  @include video;
+
+  .my-video{
+     margin-bottom: 64px;
+  }
+}
