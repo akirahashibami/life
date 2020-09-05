@@ -1,0 +1,40 @@
+<div class="follow container">
+  <div class="row">
+
+    <div class="col-lg-3">
+      <%= render partial: 'users/user_details', locals: { user: @user} %>
+    </div>
+
+    <div class="col-lg-9">
+      <div class="row">
+        <h2>Boostedユーザー 一覧</h2>
+      </div>
+
+      <% @users.each do |user| %>
+        <div class="row">
+          <div class="col-lg-3">
+          <%= link_to user_path(user) do %>
+            <%= attachment_image_tag user, :profile_image, size: "80x80", format: "jpeg", fallback: "no-img-human.png" %>
+            <p><%= user.name %></p>
+          <% end %>
+          </div>
+          <div class="col-lg-5">
+            <p><%= user.introduction %></p>
+          </div>
+
+          <div class="col-lg-4">
+            <% user.videos.each do |video| %>
+              <%= link_to video_path(video) do %>
+                <div class="video">
+                  <video src="<%= rails_blob_path(video.video) %>" width="640" height="360" type="video/mp4" allowfullscreen></video>
+                </div>
+              <% end %>
+            <% break %>
+            <% end %>
+          </div>
+
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

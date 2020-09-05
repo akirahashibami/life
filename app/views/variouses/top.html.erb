@@ -16,8 +16,8 @@
     </p>
   </div>
 
-  <div class="message-video">
-
+  <div class="video">
+    <video src="<%= rails_blob_path(@video.video) %>" type="video/mp4" width="640" height="360" muted controls></video>
   </div>
 
   <div class="message-bottom">

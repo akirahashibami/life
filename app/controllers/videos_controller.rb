@@ -12,10 +12,10 @@ class VideosController < ApplicationController
   end
 
   def show
-    @video = Video.find(params[:id])
-    @user = current_user
-    @comment = Comment.new
-    @comments = @video.comments.all
+    @video      = Video.find(params[:id])
+    @user       = current_user
+    @comment    = Comment.new
+    @comments   = @video.comments.all
   end
 
   def index
