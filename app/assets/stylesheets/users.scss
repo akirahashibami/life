@@ -33,6 +33,63 @@
 
 #show{
   @include video;
+
+  padding-bottom: 32px;
+
+  h4{
+    margin-right: 32px;
+  }
+
+  .user-profile{
+    width: 30%;
+    text-align: center;
+
+    p{
+      margin-top: 24px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+  }
+
+  .user-follower{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+
+    a{
+      display: block;
+    }
+  }
+
+  .user-edit{
+    width: 80%;
+    margin: 0 auto;
+    padding: 24px 0;
+  }
+
+  .recently-video{
+    margin: 24px 0;
+
+    h4{
+      margin-bottom: 16px;
+    }
+  }
+
+  .recently-videos{
+    margin-bottom: 48px;
+  }
+
+  .favorite-video{
+    margin: 24px 0;
+
+    h4{
+      margin-bottom: 16px;
+    }
+  }
+
+  .favorite-videos{
+    margin-bottom: 24px;
+  }
 }
 
 .follow{

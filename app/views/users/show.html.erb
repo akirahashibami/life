@@ -3,27 +3,39 @@
   <div class="row">
     <div class="user-profile">
       <%= render partial: "users/attachment", locals: { user: @user} %>
-      <%= @user.name %>
+      <p><%= @user.name %></p>
     </div>
     <div class="user-follower">
-      <%= link_to "Boost数: ユーザー 一覧へ", follows_user_path(@user) %>
-      <%= link_to "Boosted数: ユーザー 一覧へ", followers_user_path(@user) %>
+      <div class="follow">
+        <%= link_to follows_user_path(@user) do %>
+          <p>フォロー (<%= @user.followings.count %>)</p>
+        <% end %>
+      </div>
+      <div class="follower">
+        <%= link_to followers_user_path(@user) do %>
+          <p>フォロワー (<%= @user.followers.count %>)</p>
+        <% end %>
+      </div>
     </div>
   </div>
 
   <!-- フォロー機能 -->
   <%= render partial: 'users/follow', locals: { user: @user} %>
 
-  <% if @user == current_user %>
-    <%= link_to "ユーザー編集ページへ", edit_user_path(@user) %>
-  <% end %>
-
-  <div class="row">
-    <h4>最近投稿した動画</h4>
-    <%= link_to "一覧へ", users_videos_path, class: "btn btn-secondary" %>
+  <div class="user-edit">
+    <% if @user == current_user %>
+      <%= link_to "ユーザー編集ページへ", edit_user_path(@user) %>
+    <% end %>
   </div>
 
-  <div class="row">
+  <div class="recently-video row">
+    <h4>最近投稿した動画</h4>
+    <div class="show-btn">
+      <%= link_to "一覧へ", users_videos_path, class: "btn btn-secondary" %>
+    </div>
+  </div>
+
+  <div class="recently-videos row">
     <% @videos.each do |video| %>
       <div class="col-lg-3">
         <%= link_to video_path(video) do %>
@@ -38,12 +50,14 @@
     <% end %>
   </div>
 
-  <div class="row">
+  <div class="favorite-video row">
     <h4>お気に入り動画</h4>
-    <%= link_to "一覧へ", users_favorites_path, class: "btn btn-secondary" %>
+    <div class="show-btn">
+      <%= link_to "一覧へ", users_favorites_path, class: "btn btn-secondary" %>
+    </div>
   </div>
 
-  <div class="row">
+  <div class="favorite-videos row">
     <% @favo_videos.each do |video| %>
       <div class="col-lg-3">
         <%= link_to video_path(video) do %>
