@@ -19,11 +19,13 @@
                 <% end %>
               </div>
               <div class="col-lg-6">
-                <%= attachment_image_tag video.user, :profile_image, size: "50x50", fallback: "no-img-human.png" %>
+                <%= render partial: "users/attachment", locals: { user: video.user} %>
                 <%= video.introduction %>
-                <div id="favorites">
-                  <%= render partial: 'videos/favorites', locals: { video: video}  %>
-                </div>
+                <% unless video.user == current_user %>
+                  <div id="favorites">
+                    <%= render partial: 'videos/favorites', locals: { video: video}  %>
+                  </div>
+                <% end %>
               </div>
             </div>
             <div class="row">

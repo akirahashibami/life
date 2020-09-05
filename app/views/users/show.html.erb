@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="user-profile">
-      <%= attachment_image_tag @user, :profile_image, size: "100x100", fallback: "no-img-human.png" %> <br>
+      <%= render partial: "users/attachment", locals: { user: @user} %>
       <%= @user.name %>
     </div>
     <div class="user-follower">
@@ -13,6 +13,10 @@
 
   <!-- フォロー機能 -->
   <%= render partial: 'users/follow', locals: { user: @user} %>
+
+  <% if @user == current_user %>
+    <%= link_to "ユーザー編集ページへ", edit_user_path(@user) %>
+  <% end %>
 
   <div class="row">
     <h4>最近投稿した動画</h4>

@@ -1,6 +1,6 @@
 <%= link_to user_path(user) do %>
   <div class="user-image">
-    <%= attachment_image_tag user, :profile_image, size: "100x100", fallback: "no-img-human.png" %>
+    <%= render partial: "users/attachment", locals: { user: user} %>
   </div>
   <div class="user-name">
     <%= user.name %>

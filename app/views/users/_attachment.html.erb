@@ -1,0 +1,5 @@
+<% if user.profile_image.attached? %>
+  <%= image_tag(user.thumbnail) %> <br>
+<% else %>
+  <%= image_tag "no-img-human.png",size: '100x100' %>
+<% end %>

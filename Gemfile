@@ -28,7 +28,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -69,9 +69,9 @@ gem 'jquery-rails'
 # ページング機能
 gem 'kaminari', '~> 1.2.1'
 
-#  画像投稿用
-gem 'refile', require: 'refile/rails', github: 'manfe/refile'
-gem 'refile-mini_magick'
+# 画像投稿用
+# gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+# gem 'refile-mini_magick'
 
 # 環境変数管理
 gem 'dotenv-rails'

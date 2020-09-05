@@ -19,7 +19,9 @@
       <!-- いいねやPV数 -->
       <div id="favorites" class="row">
         <%= render partial: 'videos/likes', locals: { video: @video} %>
-        <%= render partial: 'videos/favorites', locals: { video: @video}  %>
+        <% unless @video.user == current_user %>
+          <%= render partial: 'videos/favorites', locals: { video: @video}  %>
+        <% end %>
       </div>
 
       <!-- フォロー機能 -->
@@ -42,7 +44,7 @@
       <% @comments.each do |comment| %>
         <div class="row">
           <div class="col-lg-2">
-            <%= attachment_image_tag comment.user, :profile_image, size: "60x60", format: "jpeg"  %>
+            <%= render partial: "users/attachment", locals: { user: comment.user} %>
           </div>
           <div class="col-lg-10">
             <%= comment.user.name %>

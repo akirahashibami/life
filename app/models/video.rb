@@ -18,4 +18,10 @@ class Video < ApplicationRecord
   def liked_by?(user)
     likes.where(user_id: user.id).exists?
   end
+
+  # ActiveStorage画像リサイズメソッド
+  def thumbnail
+    return self.profile_image.variant(resize: '100x100').processed
+  end
+  
 end

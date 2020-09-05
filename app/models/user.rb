@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :profile_image
+
   has_many :videos,             dependent: :destroy
   has_many :comments,           dependent: :destroy
   has_many :favorites,          dependent: :destroy
@@ -30,6 +32,11 @@ class User < ApplicationRecord
   # Userがfollow済みかどうか判定
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
+  end
+
+  # ActiveStorage画像リサイズメソッド
+  def thumbnail
+    return self.profile_image.variant(resize: '100x100').processed
   end
 
 

@@ -7,11 +7,13 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # code
+    @user = User.find(params[:id])
   end
 
   def update
-    # code
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to user_path(@user)
   end
 
   def favorites
@@ -39,5 +41,9 @@ class UsersController < ApplicationController
   end
 
   private
+
+  def user_params
+    params.require(:user).permit(:name, :introduction, :profile_image, :release_status, :deleted_status)
+  end
 
 end
