@@ -22,6 +22,9 @@
         <%= render partial: 'videos/favorites', locals: { video: @video}  %>
       </div>
 
+      <!-- フォロー機能 -->
+      <%= render partial: 'users/follow', locals: { user: @video.user} %>
+
       <div class="row">
         <%= @video.introduction %>
       </div>
@@ -53,8 +56,11 @@
       <% end %>
 
       <% end %>
-      <%= link_to "編集する", edit_video_path(@video), class: "btn btn-success" %>
-      <%= link_to "動画の削除", video_path(@video), method: :delete, class: "btn btn-danger" %>
+
+      <% if @video.user == current_user %>
+        <%= link_to "編集する", edit_video_path(@video), class: "btn btn-success" %>
+        <%= link_to "動画の削除", video_path(@video), method: :delete, class: "btn btn-danger" %>
+      <% end %>
     </div>
   </div>
 </div>

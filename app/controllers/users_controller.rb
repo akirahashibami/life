@@ -15,12 +15,23 @@ class UsersController < ApplicationController
   end
 
   def favorites
-    # code
+    @user = User.find(params[:id])
+    @favorites = @user.favorites_videos
   end
 
   def videos
     @user = User.find(params[:id])
     @user_videos = @user.videos
+  end
+
+  def follows
+    @user = User.find(params[:id])
+    @users = @user.followings
+  end
+
+  def followers
+    @user = User.find(params[:id])
+    @users = @user.followers
   end
 
   def withdraw

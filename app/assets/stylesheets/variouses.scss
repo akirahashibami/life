@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+
 #bg-video{
   width: 100vw;
   height: 100vh;
@@ -48,21 +49,20 @@
   padding: 240px 0;
   text-align: center;
 
-  p{
-    font-size: 3rem;
+  .video{
+    margin: 128px 0;
   }
 
-  .message-video{
-    height: 200px;
-    width: 400px;
-    border: 1px solid #111;
-    margin: 160px auto;
+  p{
+    font-size: 3rem;
   }
 
   .new-registration{
     padding-top: 120px;
   }
 }
+
+
 
 #about{
   text-align: center;
@@ -80,13 +80,13 @@
   }
 
   .about-video{
-    width: 200px;
-    border: 1px solid #111;
     margin: 80px auto;
-    padding: 30px;
   }
 
   .about-message-bottom{
-
+    a{
+      display: inline-block;
+      padding-top: 40px;
+    }
   }
 }

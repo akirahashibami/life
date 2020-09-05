@@ -9,16 +9,15 @@ Rails.application.routes.draw do
   get "variouses/about"       => "variouses#about"
 
   # ユーザーアクション
-  get "users/:id/videos"      => "users#videos" ,     as: "users_videos"
+  get "users/:id/videos"      => "users#videos" ,       as: "users_videos"
   get "users/withdraw"        => "users#withdraw"
-  get "users/favorites"       => "users#favorites"
+  get "users/:id/favorites"       => "users#favorites", as: "users_favorites"
 
   resources :users,           only: [:show, :edit, :update] do
-    resource :relationships,  only: [:create, :destroy] do
+    resource :relationships,  only: [:create, :destroy]
       get :follows,   on: :member
       get :followers, on: :member
       # memberはidを取得できるようにする
-    end
   end
 
   # 動画アクション

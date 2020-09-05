@@ -3,7 +3,7 @@ class VariousesController < ApplicationController
   layout "top"
 
   def top
-    # code
+    @video = Video.order(created_at: :desc).first
   end
 
   def about

@@ -6,10 +6,13 @@
       <%= @user.name %>
     </div>
     <div class="user-follower">
-      <%= link_to "フォロー数: ユーザー一覧へ", follows_user_relationships_path(@user) %>
-      <%= link_to "フォロワー数: ユーザー一覧へ", followers_user_relationships_path(@user) %>
+      <%= link_to "Boost数: ユーザー 一覧へ", follows_user_path(@user) %>
+      <%= link_to "Boosted数: ユーザー 一覧へ", followers_user_path(@user) %>
     </div>
   </div>
+
+  <!-- フォロー機能 -->
+  <%= render partial: 'users/follow', locals: { user: @user} %>
 
   <div class="row">
     <h4>最近投稿した動画</h4>
