@@ -49,6 +49,10 @@
   padding: 240px 0;
   text-align: center;
 
+  .message-top{
+    color: #444;
+  }
+
   .video{
     margin: 128px 0;
   }
@@ -57,8 +61,13 @@
     font-size: 3rem;
   }
 
+  .message-bottom{
+    color: #444;
+  }
+
   .new-registration{
     padding-top: 120px;
+    padding-bottom: 30px;
   }
 }
 

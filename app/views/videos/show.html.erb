@@ -1,47 +1,46 @@
-<div class="container">
-  <div class="row">
+<div id="show">
+  <%= render partial: 'users/user_details', locals: { user: @user }  %>
 
-    <div class="col-xl-3">
-      <%= render partial: 'users/user_details', locals: { user: @user }  %>
-    </div>
+  <div class="container">
+    <div class="row">
 
-    <div class="col-xl-9">
-      <% if @video.video.attached? %>
+      <div class="col-xl-12">
+        <% if @video.video.attached? %>
 
-      <div class="row">
-        <video src="<%= rails_blob_path(@video.video) %>" type="video/mp4" controls></video>
-      </div>
+        <div class="row">
+          <video src="<%= rails_blob_path(@video.video) %>" type="video/mp4" controls></video>
+        </div>
 
-      <div class="row">
-        <%= @video.title %>
-      </div>
+        <div class="row">
+          <%= @video.title %>
+        </div>
 
-      <!-- いいねやPV数 -->
-      <div id="favorites" class="row">
-        <%= render partial: 'videos/likes', locals: { video: @video} %>
-        <% unless @video.user == current_user %>
+        <!-- いいねやPV数 -->
+        <div id="favorites" class="row">
+          <%= render partial: 'videos/likes', locals: { video: @video} %>
+          <% unless @video.user == current_user %>
           <%= render partial: 'videos/favorites', locals: { video: @video}  %>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
 
-      <!-- フォロー機能 -->
-      <%= render partial: 'users/follow', locals: { user: @video.user} %>
+        <!-- フォロー機能 -->
+        <%= render partial: 'users/follow', locals: { user: @video.user} %>
 
-      <div class="row">
-        <%= @video.introduction %>
-      </div>
+        <div class="row">
+          <%= @video.introduction %>
+        </div>
 
-      <!-- コメント機能 -->
-      <div class="comments row">
-        <h5>コメント</h5>
-        <%= form_with model: [@video, @comment] do |f| %>
+        <!-- コメント機能 -->
+        <div class="comments row">
+          <h5>コメント</h5>
+          <%= form_with model: [@video, @comment] do |f| %>
           <%= f.text_area :comment %>
           <%= f.submit "コメントする" %>
-        <% end %>
-      </div>
+          <% end %>
+        </div>
 
-      <!-- 投稿コメント一覧 -->
-      <% @comments.each do |comment| %>
+        <!-- 投稿コメント一覧 -->
+        <% @comments.each do |comment| %>
         <div class="row">
           <div class="col-lg-2">
             <%= render partial: "users/attachment", locals: { user: comment.user} %>
@@ -51,18 +50,19 @@
             <%= comment.created_at %> <br>
             <%= comment.comment %>
             <% if comment.user == current_user %>
-              <%= link_to "コメントを削除", video_comment_path(comment.video, comment), method: :delete %>
+            <%= link_to "コメントを削除", video_comment_path(comment.video, comment), method: :delete %>
             <% end %>
           </div>
         </div>
-      <% end %>
+        <% end %>
 
-      <% end %>
+        <% end %>
 
-      <% if @video.user == current_user %>
+        <% if @video.user == current_user %>
         <%= link_to "編集する", edit_video_path(@video), class: "btn btn-success" %>
         <%= link_to "動画の削除", video_path(@video), method: :delete, class: "btn btn-danger" %>
-      <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>

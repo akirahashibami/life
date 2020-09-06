@@ -1,40 +1,27 @@
-<div class="follow container">
-  <div class="row">
+<div id="follow">
+  <%= render partial: 'users/user_details', locals: { user: @current_user} %>
 
-    <div class="col-lg-3">
-      <%= render partial: 'users/user_details', locals: { user: @user} %>
+  <div class="container">
+    <div class="row">
+      <h2>フォロワー</h2>
     </div>
 
-    <div class="col-lg-9">
-      <div class="row">
-        <h2>Boostedユーザー 一覧</h2>
-      </div>
-
-      <% @users.each do |user| %>
+    <% @users.each do |user| %>
+    <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-12">
         <div class="row">
-          <div class="col-lg-3">
-          <%= link_to user_path(user) do %>
-            <%= render partial: "users/attachment", locals: { user: user} %>
+          <div class="col-lg-3 col-md-3 col-sm-5">
+            <%= link_to user_path(user) do %>
+            <%= render partial: "users/attachment", locals: { user: user}, class: "attachment_image" %>
             <p><%= user.name %></p>
-          <% end %>
-          </div>
-          <div class="col-lg-5">
-            <p><%= user.introduction %></p>
-          </div>
-
-          <div class="col-lg-4">
-            <% user.videos.each do |video| %>
-              <%= link_to video_path(video) do %>
-                <div class="video">
-                  <video src="<%= rails_blob_path(video.video) %>" width="640" height="360" type="video/mp4" allowfullscreen></video>
-                </div>
-              <% end %>
-            <% break %>
             <% end %>
           </div>
-
+          <div class="col-lg-5 col-md-5 col-sm-7">
+            <p class="introduction"><%= user.introduction %></p>
+          </div>
         </div>
-      <% end %>
+      </div>
     </div>
+    <% end %>
   </div>
 </div>

@@ -1,9 +1,9 @@
 <% unless user == current_user %>
   <div class="row">
     <% if user.followed_by?(current_user) %>
-      <p><%= link_to "Boosting Now!!", user_relationships_path(user), method: :delete %></p>
+      <p><%= link_to "フォロー中！", user_relationships_path(user), method: :delete %></p>
     <% else %>
-      <p><%= link_to "Boosting!!", user_relationships_path(user) , method: :post %></p>
+      <p><%= link_to "フォロー！", user_relationships_path(user) , method: :post %></p>
     <% end %>
   </div>
 <% end %>

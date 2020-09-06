@@ -1,23 +1,27 @@
-<%= link_to user_path(user) do %>
-  <div class="user-image">
-    <%= render partial: "users/attachment", locals: { user: user} %>
+<div id="user-detalis">
+  <div id="details">
+    <%= link_to user_path(user), class: "user-info" do %>
+    <div class="user-image">
+      <%= render partial: "users/attachment", locals: { user: user} %>
+    </div>
+    <div class="user-name">
+      <%= user.name %>
+    </div>
+    <% end %>
+    <div class="new-video">
+      <%= link_to "動画を投稿する", new_video_path, class: "btn btn-success" %>
+    </div>
+    <div class="link user-post-videos">
+      <%= link_to "投稿した動画一覧", users_videos_path(user) %>
+    </div>
+    <div class="link user-fovorite-videos">
+      <%= link_to "お気に入り動画", users_favorites_path(user) %>
+    </div>
+    <div class="link user-follows">
+      <%= link_to "フォロー中ユーザー", follows_user_path(user) %>
+    </div>
+    <div class="link user-followers">
+      <%= link_to "フォロワーユーザー", followers_user_path(user) %>
+    </div>
   </div>
-  <div class="user-name">
-    <%= user.name %>
-  </div>
-<% end %>
-<div class="new-video">
-  <%= link_to "動画を投稿する", new_video_path, class: "btn btn-success" %>
-</div>
-<div class="user-post-videos">
-  <%= link_to "投稿した動画一覧", users_videos_path(user) %>
-</div>
-<div class="user-fovorite-videos">
-  <%= link_to "お気に入り動画", users_favorites_path(user) %>
-</div>
-<div class="user-follows">
-  <%= link_to "フォロー中ユーザー", follows_user_path(user) %>
-</div>
-<div class="user-followers">
-  <%= link_to "フォロワーユーザー", followers_user_path(user) %>
 </div>
