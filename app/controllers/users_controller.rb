@@ -32,13 +32,13 @@ class UsersController < ApplicationController
   def follows
     @current_user = current_user
     @user = User.find(params[:id])
-    @users = @user.followings
+    @users = @user.followings.where(release_status: 1)
   end
 
   def followers
     @current_user = current_user
     @user = User.find(params[:id])
-    @users = @user.followers
+    @users = @user.followers.where(release_status: 1)
   end
 
   def withdraw

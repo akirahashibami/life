@@ -19,8 +19,11 @@
 
     <div class="field user-release_status">
       <h5>公開ステータス</h5>
-      <p>※非公開にすると、ユーザーの情報や動画は他のユーザーからは見えないようになります</p>
-
+      <p class="status_menu">※非公開にすると、ユーザーの情報や動画は他のユーザーからは見えないようになります</p>
+      <div class="radio_button">
+        <label><%= f.radio_button :release_status, 1 %> 公開</label>
+        <label><%= f.radio_button :release_status, 0 %> 非公開</label>
+      </div>
     </div>
 
     <div class="actions form-btn">

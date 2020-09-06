@@ -90,6 +90,12 @@
     color: #777;
   }
 
+  .unless-acaunt{
+    margin-top: 24px;
+    font-size: 1.2rem;
+    color: #666;
+  }
+
   .user-profile{
     width: 25%;
     text-align: center;
@@ -217,6 +223,27 @@
       textarea{
         width: 100%;
         height: 120px;
+      }
+    }
+
+    .user-release_status{
+      margin-bottom: 18px;
+      h5{
+        margin-bottom: 10px;
+      }
+      p{
+        font-size: .9rem;
+      }
+      .radio_button{
+        text-align: center;
+
+        label{
+          margin: 12px;
+        }
+
+        input{
+          margin-bottom: 3px;
+        }
       }
     }
 
