@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row">
+    <div class="user-profile">
+      <%= render partial: "users/attachment", locals: { user: @user} %>
+      <p><%= @user.name %></p>
+    </div>
+    <div class="user-follower">
+      <div class="follow">
+        <p>フォロー (<%= @user.followings.count %>)</p>
+      </div>
+      <div class="follower">
+        <p>フォロワー (<%= @user.followers.count %>)</p>
+      </div>
+    </div>
+  </div>
+  <div class="unless-acaunt row">
+    <p>【このアカウントは現在非公開となっています】</p>
+  </div>
+</div>

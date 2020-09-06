@@ -1,4 +1,11 @@
 <div id="show">
+
+  <% if @user.release_status == 0 && @user != current_user %>
+
+    <%= render partial: 'users/unless_user', locals: { user: @user} %>
+
+  <% else %>
+
   <div class="container">
 
     <div class="row">
@@ -79,4 +86,7 @@
       <% end %>
     </div>
   </div>
+
+  <% end %>
+
 </div>

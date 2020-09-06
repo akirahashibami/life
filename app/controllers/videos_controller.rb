@@ -15,7 +15,7 @@ class VideosController < ApplicationController
     @video      = Video.find(params[:id])
     @user       = current_user
     @comment    = Comment.new
-    @comments   = @video.comments.all
+    @comments   = @video.comments
   end
 
   def index
