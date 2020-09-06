@@ -19,7 +19,7 @@ class VideosController < ApplicationController
   end
 
   def index
-    @videos = Video.all
+    @videos = Video.order(id: "DESC")
     @user = current_user
   end
 

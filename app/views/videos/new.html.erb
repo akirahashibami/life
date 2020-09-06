@@ -1,17 +1,30 @@
-<div class="container">
+<div id="new">
+  <div class="container">
 
-  <div class="row">
-    <h2>動画のアップロード</h2>
-  </div>
+    <div class="row">
+      <h2>動画のアップロード</h2>
+    </div>
 
-  <div class="row">
-    <%= form_with model: @video, local: true do |f| %>
-      <%= f.file_field :video %> <br>
-      <p>タイトル <%= f.text_field :title %></p> <br>
-      <p>動画の説明 <%= f.text_area :introduction %></p>
+    <div class="upload row">
+      <%= form_with model: @video, local: true do |f| %>
+      <%= f.file_field :video, class: "file_field" %> <br>
+      <table class="table table-borderless col-lg-10 col-md-10 col-sm-11">
+        <tbody>
+          <tr>
+            <td>タイトル</td>
+            <td><%= f.text_field :title %></td>
+          <tr>
+            <td>動画の説明</td>
+            <td><%= f.text_area :introduction %></td>
+          </tr>
+        </tbody>
+      </table>
       <p>※ 10秒程度が動画の長さの目安です</p>
-      <%= f.submit %>
-    <% end %>
-    <%= link_to "キャンセル", videos_path %>
+      <div class="link-box">
+      <%= f.submit "アップロード", class: "btn btn-success" %>
+      <%= link_to "キャンセル", videos_path, class: "btn btn-secondary" %>
+      </div>
+      <% end %>
+    </div>
   </div>
 </div>

@@ -3,29 +3,33 @@
 
 <div class="container">
   <div class="row">
-    
+
     <div class="col-xl-12">
       <div class="row">
         <h2>動画一覧</h2>
       </div>
       <div class="row">
         <% @videos.each do |video| %>
-          <div class="col-xl-6">
+          <div class="col-xl-3 col-md-3 col-xs-4 col-xs-5">
             <%= link_to video_path(video) do %>
             <div class="video">
               <video src="<%= rails_blob_path(video.video) %>"　width="640" height="360" type="video/mp4" allowfullscreen></video>
             </div>
-            <div class="video-data">
-              <%= video.title %> <br>
-              <%# <%= video.user.profile_image %>
-              <%= video.user.name %>
-              <%= video.created_at %>
-              <!-- いいねとかが入ります -->
-              <div id="likes">
-                <%= render partial: 'videos/likes', locals: { video: video} %>
+            <div class="row">
+              <div class="video-image col-lx-3 col-md-3 col-sm-12 col-xs-12">
+                <%= image_tag video.user.profile_image %>
+              </div>
+              <div class="video-data col-lx-9 col-md-9 col-sm-12 col-xs-12">
+                <%= video.title %> <br>
+                <%= video.user.name %>
+                <%= video.created_at %>
+                <!-- いいねとかが入ります -->
               </div>
             </div>
             <% end %>
+            <div id="likes">
+              <%= render partial: 'videos/likes', locals: { video: video} %>
+            </div>
           </div>
         <% end %>
       </div>

@@ -4,63 +4,81 @@
   <div class="container">
     <div class="row">
 
-      <div class="col-xl-12">
+      <div class="col-xl-11 col-md-11 col-sm-11 col-xs-11">
         <% if @video.video.attached? %>
 
         <div class="row">
-          <video src="<%= rails_blob_path(@video.video) %>" type="video/mp4" controls></video>
+          <div class="video">
+            <video src="<%= rails_blob_path(@video.video) %>" type="video/mp4" controls></video>
+          </div>
         </div>
 
-        <div class="row">
-          <%= @video.title %>
+        <div class="info-box row">
+            <div class="user-image col-lg-2 col-md-2 col-sm-2 col-xs-2">
+              <%= link_to user_path(@video.user) do %>
+                <%= render partial: "users/attachment", locals: { user: @video.user} %> <br>
+                <p><%= @video.user.name %></p>
+              <% end %>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6"></div>
+            <div class="created col-lg-2 col-md-2 col-sm-4 col-xs-4">
+              <%= @video.created_at %>
+            </div>
+        </div>
+
+        <div class="title-box row">
+          <div class="title">
+            <%= @video.title %>
+          </div>
+        </div>
+
+        <div class="introduction row">
+          <%= @video.introduction %>
         </div>
 
         <!-- いいねやPV数 -->
         <div id="favorites" class="row">
-          <%= render partial: 'videos/likes', locals: { video: @video} %>
+          <%= render partial: 'videos/likes', locals: { video: @video}, class: "favorite" %>
           <% unless @video.user == current_user %>
-          <%= render partial: 'videos/favorites', locals: { video: @video}  %>
+            <%= render partial: 'videos/favorites', locals: { video: @video}  %>
+            <p>(お気に入り数: <%= @video.favorites.count %>)</p>
           <% end %>
         </div>
 
-        <!-- フォロー機能 -->
-        <%= render partial: 'users/follow', locals: { user: @video.user} %>
-
-        <div class="row">
-          <%= @video.introduction %>
+        <div class="link-box">
+          <% if @video.user == current_user %>
+          <%= link_to "編集する", edit_video_path(@video), class: "btn btn-success" %>
+          <%= link_to "動画の削除", video_path(@video), method: :delete, class: "btn btn-danger" %>
+          <% end %>
         </div>
 
+        <div class="comment">コメント</div>
         <!-- コメント機能 -->
         <div class="comments row">
-          <h5>コメント</h5>
           <%= form_with model: [@video, @comment] do |f| %>
-          <%= f.text_area :comment %>
-          <%= f.submit "コメントする" %>
+          <%= f.text_area :comment, rows: 3 %>
+          <%= f.submit "コメントする", class: "btn btn-primary" %>
           <% end %>
         </div>
 
         <!-- 投稿コメント一覧 -->
         <% @comments.each do |comment| %>
-        <div class="row">
-          <div class="col-lg-2">
-            <%= render partial: "users/attachment", locals: { user: comment.user} %>
+        <div class="post-comments row">
+          <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
+            <%= link_to user_path(comment.user) do %>
+              <%= render partial: "users/attachment", locals: { user: comment.user} %>
+            <% end %>
           </div>
-          <div class="col-lg-10">
+          <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
+            <%= comment.comment %> <br>
             <%= comment.user.name %>
-            <%= comment.created_at %> <br>
-            <%= comment.comment %>
+            <%= comment.created_at %>
             <% if comment.user == current_user %>
             <%= link_to "コメントを削除", video_comment_path(comment.video, comment), method: :delete %>
             <% end %>
           </div>
         </div>
         <% end %>
-
-        <% end %>
-
-        <% if @video.user == current_user %>
-        <%= link_to "編集する", edit_video_path(@video), class: "btn btn-success" %>
-        <%= link_to "動画の削除", video_path(@video), method: :delete, class: "btn btn-danger" %>
         <% end %>
       </div>
     </div>
