@@ -2,36 +2,38 @@
 
   <%= form_with model: @user,　method: :patch, local: true do |f| %>
 
-    <div class="user-name">
-      <p>ユーザーネーム</p> <br>
+    <div class="field　user-name">
+      <p>ユーザーネーム</p>
       <%= f.text_field :name %>
     </div>
 
-    <div class="user-image">
+    <div class="field user-image">
       <p>プロフィールイメージ</p>
       <%= f.file_field :profile_image %>
     </div>
 
-    <div class="user-introduction">
-      <p>自己紹介分</p> <br>
+    <div class="field user-introduction">
+      <p>ユーザー紹介</p>
       <%= f.text_area :introduction %>
     </div>
 
-    <div class="user-release_status">
+    <div class="field user-release_status">
       <h5>公開ステータス</h5>
       <p>※非公開にすると、ユーザーの情報や動画は他のユーザーからは見えないようになります</p>
 
     </div>
 
-    <div class="form-btn">
+    <div class="actions form-btn">
       <%= f.submit "更新", class: "btn btn-success" %>
+    </div>
+
+    <div class="user-delete">
+      <%= link_to "キャンセル", user_path(@user), class: "btn btn-secondary" %>
+      <%= link_to "退会する", users_withdraw_path, class: "btn btn-danger" %>
     </div>
 
   <% end %>
 
-  <div class="user-delete">
-    <%= link_to "退会する", users_withdraw_path, class: "btn btn-danger" %>
-    <%= link_to "キャンセル", user_path(@user), class: "btn btn-secondary" %>
-  </div>
+
 
 </div>
