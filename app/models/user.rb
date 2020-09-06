@@ -36,7 +36,7 @@ class User < ApplicationRecord
 
   # ActiveStorage画像リサイズメソッド
   def thumbnail
-    return self.profile_image.variant(resize: '100x100').processed
+    return self.profile_image.variant(resize: '150x150').processed
   end
 
 

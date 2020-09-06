@@ -24,19 +24,9 @@
 
 /* ================================================= */
 
-
-
-/* ===================== index  ==================== */
-
 #index{
   @include video;
 }
-
-/* ================================================= */
-
-
-
-/* ================== user-videos ================= */
 
 #videos{
   @include video;
@@ -44,37 +34,79 @@
   display: flex;
 
   h2{
-    margin-bottom: 24px;
+    margin-bottom: 48px;
+    color: #777;
   }
 
   .my-video{
      margin-bottom: 64px;
+
+     .video{
+       margin-bottom: 18px;
+     }
+
+     img{
+       margin: 24px 0;
+       width: 100px;
+     }
+
+     .title-index{
+       margin-bottom: 10px;
+       font-size: 1.3rem;
+       font-weight: bold;
+
+       a{
+        text-decoration: none;
+        color: #666; 
+       }
+     }
+
+     .video-status{
+       display: flex;
+
+       a{
+         text-decoration: none;
+       }
+
+       span{
+         margin-right: 16px;
+       }
+     }
   }
 }
 
-/* ================================================= */
-
-
-/* ===================== show ======================== */
 
 #show{
   @include video;
+
+  a{
+    text-decoration: none;
+  }
 
   padding-bottom: 32px;
 
   h4{
     margin-right: 32px;
+    color: #777;
   }
 
   .user-profile{
-    width: 30%;
+    width: 25%;
     text-align: center;
 
     p{
-      margin-top: 24px;
+      margin: 10px 0;
       font-size: 1.2rem;
       font-weight: bold;
+      width: 100%;
     }
+  }
+
+  .user-follow{
+    margin-left: 10%;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 16px 0;
   }
 
   .user-follower{
@@ -90,11 +122,11 @@
   .user-edit{
     width: 80%;
     margin: 0 auto;
-    padding: 24px 0;
+    padding: 12px 0;
   }
 
   .recently-video{
-    margin: 24px 0;
+    margin: 12px 0;
 
     h4{
       margin-bottom: 16px;
@@ -103,6 +135,11 @@
 
   .recently-videos{
     margin-bottom: 48px;
+
+    .link-box{
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .favorite-video{
@@ -115,14 +152,15 @@
 
   .favorite-videos{
     margin-bottom: 24px;
+
+    .link-box{
+      display: flex;
+      flex-direction: column;
+    }
   }
 }
 
-/* ================================================= */
 
-
-
-/* ==================== edit ======================= */
 
 #edit{
   width: 100%;
@@ -229,12 +267,6 @@
   }
 }
 
-
-/* ================================================= */
-
-
-/* ================== favorites ==================== */
-
 #favoites{
   @include video;
 
@@ -245,17 +277,37 @@
   }
 }
 
-/* ================================================= */
 
-
-/* ================== followers ==================== */
 #follow{
   @include video;
 
   display: flex;
-
   h2{
+    color: #777;
+  }
+
+  .row{
     margin-bottom: 24px;
+
+    a{
+      color: #777;
+
+      &:hover{
+        background-color: #aaa;
+      }
+
+      img{
+        display: block;
+        margin: 0 auto;
+      }
+      p{
+        text-align: center;
+        font-size: 0.8rem;
+      }
+    }
+
+    .introduction{
+      padding-top: 32px;
+    }
   }
 }
-/* ================================================= */

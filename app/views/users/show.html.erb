@@ -1,74 +1,82 @@
-<div id="show" class="container">
+<div id="show">
+  <div class="container">
 
-  <div class="row">
-    <div class="user-profile">
-      <%= render partial: "users/attachment", locals: { user: @user} %>
-      <p><%= @user.name %></p>
-    </div>
-    <div class="user-follower">
-      <div class="follow">
-        <%= link_to follows_user_path(@user) do %>
+    <div class="row">
+      <div class="user-profile">
+        <%= render partial: "users/attachment", locals: { user: @user} %>
+        <p><%= @user.name %></p>
+      </div>
+      <div class="user-follower">
+        <div class="follow">
+          <%= link_to follows_user_path(@user) do %>
           <p>フォロー (<%= @user.followings.count %>)</p>
-        <% end %>
-      </div>
-      <div class="follower">
-        <%= link_to followers_user_path(@user) do %>
+          <% end %>
+        </div>
+        <div class="follower">
+          <%= link_to followers_user_path(@user) do %>
           <p>フォロワー (<%= @user.followers.count %>)</p>
-        <% end %>
+          <% end %>
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- フォロー機能 -->
-  <%= render partial: 'users/follow', locals: { user: @user} %>
-
-  <div class="user-edit">
-    <% if @user == current_user %>
-      <%= link_to "ユーザー編集ページへ", edit_user_path(@user) %>
-    <% end %>
-  </div>
-
-  <div class="recently-video row">
-    <h4>最近投稿した動画</h4>
-    <div class="show-btn">
-      <%= link_to "一覧へ", users_videos_path, class: "btn btn-secondary" %>
+    <!-- フォロー機能 -->
+    <div class="user-follow">
+      <%= render partial: 'users/follow', locals: { user: @user} %>
     </div>
-  </div>
 
-  <div class="recently-videos row">
-    <% @videos.each do |video| %>
+    <div class="user-edit row">
+      <% if @user == current_user %>
+      <%= link_to "ユーザー編集ページへ", edit_user_path(@user) %>
+      <% end %>
+    </div>
+
+    <div class="recently-video row">
+      <h4>最近投稿した動画</h4>
+      <div class="show-btn">
+        <%= link_to "一覧へ", users_videos_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+
+    <div class="recently-videos row">
+      <% @videos.each do |video| %>
       <div class="col-lg-3">
         <%= link_to video_path(video) do %>
         <div class="video">
           <video src="<%= rails_blob_path(video.video) %>"　width="640" height="360" type="video/mp4" allowfullscreen></video>
         </div>
-        <%= video.title %>
-        <%= video.user.name %>
-        <%= video.created_at %>
+        <div class="link-box">
+          <span><%= video.title %></span>
+          <span><%= video.user.name %></span>
+          <span><%= video.created_at %></span>
+        </div>
         <% end %>
       </div>
-    <% end %>
-  </div>
-
-  <div class="favorite-video row">
-    <h4>お気に入り動画</h4>
-    <div class="show-btn">
-      <%= link_to "一覧へ", users_favorites_path, class: "btn btn-secondary" %>
+      <% end %>
     </div>
-  </div>
 
-  <div class="favorite-videos row">
-    <% @favo_videos.each do |video| %>
+    <div class="favorite-video row">
+      <h4>お気に入り動画</h4>
+      <div class="show-btn">
+        <%= link_to "一覧へ", users_favorites_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+
+    <div class="favorite-videos row">
+      <% @favo_videos.each do |video| %>
       <div class="col-lg-3">
         <%= link_to video_path(video) do %>
-          <div class="video">
-            <video src="<%= rails_blob_path(video.video) %>"　width="640" height="360" type="video/mp4" allowfullscreen></video>
-          </div>
-          <%= video.title %>
-          <%= video.user.name %>
-          <%= video.created_at %>
+        <div class="video">
+          <video src="<%= rails_blob_path(video.video) %>"　width="640" height="360" type="video/mp4" allowfullscreen></video>
+        </div>
+        <div class="link-box">
+          <span><%= video.title %></span>
+          <span><%= video.user.name %></span>
+          <span><%= video.created_at %></span>
+        </div>
         <% end %>
       </div>
-    <% end %>
+      <% end %>
+    </div>
   </div>
 </div>

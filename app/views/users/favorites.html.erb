@@ -1,5 +1,5 @@
 <div id="videos">
-  <%= render partial: 'users/user_details', locals: { user: @user }  %>
+  <%= render partial: 'users/user_details', locals: { user: @current_user }  %>
 
 <div class="container">
   <div class="row">
@@ -10,25 +10,30 @@
           <% @favorites.each do |video| %>
           <div class="my-video container">
             <div class="row">
-              <div class="col-lg-6">
+              <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10">
                 <%= link_to video_path(video) do %>
-                  <div class="video">
-                    <video src="<%= rails_blob_path(video.video) %>"　width="640" height="360" type="video/mp4" allowfullscreen></video>
-                  </div>
+                <div class="video">
+                  <video src="<%= rails_blob_path(video.video) %>"　width="640" height="360" type="video/mp4" allowfullscreen></video>
+                </div>
                 <% end %>
               </div>
-              <div class="col-lg-6">
-                <%= image_tag(video.user.thumbnail) %>
+              <div class="col-lg-5 col-md-5 col-sm-10 col-sx-10">
+                <%= render partial: "users/attachment", locals: { user: video.user} %> <br>
                 <%= video.introduction %>
+                <% unless video.user == current_user %>
                 <div id="favorites">
-                  <%= render partial: 'videos/favorited', locals: { video: video}  %>
+                  <%= render partial: 'videos/favorites', locals: { video: video}  %>
                 </div>
+                <% end %>
               </div>
             </div>
-            <div class="row">
-              <%= link_to video.title %>
+            <div class="title-index row">
+              <%= link_to video.title, video_path(video) %>
+            </div>
+            <div class="video-status row">
+              <span><%= render partial: 'videos/likes', locals: { video: video} %></span>
+              <span><%= render partial: 'videos/favorited', locals: { video: video} %></span>
               <%= video.created_at %>
-              <%# いいねとかが入る %>
             </div>
           </div>
           <% end %>

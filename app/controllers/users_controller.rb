@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   def show
+    @current_user = current_user
     @user = User.find(params[:id])
     @videos = @user.videos.order(id: "DESC").limit(4)
     @favo_videos = @user.favorites_videos.order(id: "DESC").limit(4)
@@ -18,20 +19,24 @@ class UsersController < ApplicationController
 
   def favorites
     @user = User.find(params[:id])
+    @current_user = current_user
     @favorites = @user.favorites_videos
   end
 
   def videos
+    @current_user = current_user
     @user = User.find(params[:id])
     @user_videos = @user.videos
   end
 
   def follows
+    @current_user = current_user
     @user = User.find(params[:id])
     @users = @user.followings
   end
 
   def followers
+    @current_user = current_user
     @user = User.find(params[:id])
     @users = @user.followers
   end
