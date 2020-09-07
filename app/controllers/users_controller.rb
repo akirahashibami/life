@@ -45,7 +45,13 @@ class UsersController < ApplicationController
   end
 
   def withdraw
-    # code
+    @user = current_user
+  end
+
+  def destroy
+    @user = current_user
+    @user.destroy
+    redirect_to root_path
   end
 
   private
