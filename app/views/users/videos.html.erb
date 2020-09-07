@@ -31,7 +31,7 @@
             <%= link_to video.title %>
           </div>
           <div class="video-status row">
-            <span><%= render partial: 'videos/likes', locals: { video: video} %></span>
+            <span id="like_<%= video.id %>"><%= render partial: 'videos/likes', locals: { video: video} %></span>
             <span><%= render partial: 'videos/favorites', locals: { video: video} %></span>
             <%= video.created_at %>
           </div>

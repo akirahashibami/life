@@ -1,0 +1,1 @@
+$('#like_<%= @video.id %>').html("<%= j(render partial: 'videos/likes', locals: { video: @video}) %>");

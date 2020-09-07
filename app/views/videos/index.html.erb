@@ -28,7 +28,7 @@
                 </div>
               </div>
               <% end %>
-              <div id="likes">
+              <div id="like_<%= video.id %>" class="likes">
                 <%= render partial: 'videos/likes', locals: { video: video} %>
               </div>
             </div>
