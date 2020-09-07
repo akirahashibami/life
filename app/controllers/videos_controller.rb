@@ -1,6 +1,7 @@
 class VideosController < ApplicationController
 
   before_action :authenticate_user!
+  before_action :ensure_correct_user, only: [:edit, :update]
 
   def new
     @video = Video.new
@@ -42,6 +43,14 @@ class VideosController < ApplicationController
   end
 
   private
+
+  # 動画投稿ユーザー以外はURL直打ちで編集に遷移できないようにする
+  def ensure_correct_user
+    video = Video.find(params[:id])
+      unless video.user == current_user
+        redirect_back(fallback_location: videos_path)
+      end
+  end
 
   def video_params
     params.require(:video).permit(:title, :introduction, :video)
