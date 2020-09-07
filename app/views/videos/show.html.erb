@@ -65,25 +65,10 @@
         </div>
 
         <!-- 投稿コメント一覧 -->
-        <% @comments.each do |comment| %>
-          <% if comment.user.release_status == 1 %>
-            <div class="post-comments row">
-              <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
-                <%= link_to user_path(comment.user) do %>
-                  <%= render partial: "users/attachment", locals: { user: comment.user} %>
-                <% end %>
-              </div>
-              <div class="col-lg-10 col-md-10 col-sm-9 col-xs-8">
-                <%= comment.comment %> <br>
-                <%= comment.user.name %>
-                <%= comment.created_at %>
-                <% if comment.user == current_user %>
-                <%= link_to "コメントを削除", video_comment_path(comment.video, comment), method: :delete %>
-                <% end %>
-              </div>
-            </div>
-          <% end %>
-        <% end %>
+        <div id="comments">
+          <%= render partial: 'videos/comments', locals: { comments: @comments} %>
+        </div>
+
         <% end %>
       </div>
     </div>
