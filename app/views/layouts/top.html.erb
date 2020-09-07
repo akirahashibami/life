@@ -17,14 +17,25 @@
         	<input class="toggle" type="checkbox" />
         	<div class="hamburger"><span></span></div>
         	<div class="menu">
-        		<div>
-        		<ul>
-        		<li><%= link_to "Top", root_path %></li>
-        		<li><%= link_to "L/Logを始める", new_user_registration_path %></li>
-        		<li><%= link_to "ログイン", new_user_session_path %></li>
-        		<li><%= link_to "このサイトについて", variouses_about_path %></li>
-        		</ul>
-        		</div>
+            <% if user_signed_in? %>
+            <div>
+              <ul>
+                <li><%= link_to "Top", root_path %></li>
+                <li><%= link_to "マイページ", user_path(current_user) %></li>
+                <li><%= link_to "ムービー 一覧", videos_path %></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </div>
+            <% else %>
+            <div>
+              <ul>
+                <li><%= link_to "Top", root_path %></li>
+                <li><%= link_to "L/Logを始める", new_user_registration_path %></li>
+                <li><%= link_to "ログイン", new_user_session_path %></li>
+                <li><%= link_to "このサイトについて", variouses_about_path %></li>
+              </ul>
+            </div>
+            <% end %>
         	</div>
         </div>
       </header>
