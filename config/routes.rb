@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   get "users/withdraw"        => "users#withdraw"
   get "users/:id/favorites"       => "users#favorites", as: "users_favorites"
 
-  resources :users,           only: [:show, :edit, :update] do
+  resources :users,           only: [:show, :edit, :update, :destroy] do
     resource :relationships,  only: [:create, :destroy]
       get :follows,   on: :member
       get :followers, on: :member

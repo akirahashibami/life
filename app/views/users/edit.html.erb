@@ -32,7 +32,9 @@
 
     <div class="user-delete">
       <%= link_to "キャンセル", user_path(@user), class: "btn btn-secondary" %>
-      <%= link_to "退会する", users_withdraw_path, class: "btn btn-danger" %>
+      <%= link_to users_withdraw_path, class: "withdraw btn btn-danger" do %>
+        <p>アカウント削除</p>
+      <% end %>
     </div>
 
   <% end %>

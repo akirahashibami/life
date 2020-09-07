@@ -281,15 +281,19 @@
   }
 
   .user-delete{
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
     padding-bottom: 32px;
 
     a{
-      width: 33%;
+      width: 40%;
       font-size: 0.7rem;
+      p{
+        font-size: .7rem;
+        margin: 0;
+      }
     }
   }
 }
@@ -336,6 +340,38 @@
 
     .introduction{
       padding-top: 32px;
+    }
+  }
+}
+
+
+#withdraw{
+  width: 100%;
+
+  .withdraw-message{
+    margin: 0 auto;
+    text-align: center;
+    margin-bottom: 32px;
+
+    p{
+      font-weight: bold;
+
+      span{
+        display: block;
+        font-size: 1.5rem;
+        color: red;
+        margin-bottom: 18px;
+      }
+    }
+  }
+
+  .link-box{
+    text-align: center;
+    a{
+      padding: 10px;
+      margin: 0 20px;
+      width: 10%;
+      display: inline-block;
     }
   }
 }
