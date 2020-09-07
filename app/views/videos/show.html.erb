@@ -38,10 +38,13 @@
 
         <!-- いいねやPV数 -->
         <div id="favorites" class="row">
-          <%= render partial: 'videos/likes', locals: { video: @video}, class: "favorite" %>
+          <div id="like_<%= @video.id %>">
+            <%= render partial: 'videos/likes', locals: { video: @video} %>
+          </div>
           <% unless @video.user == current_user %>
-            <%= render partial: 'videos/favorites', locals: { video: @video}  %>
-            <p>(お気に入り数: <%= @video.favorites.count %>)</p>
+            <div id="favorite_<%= @video.id %>">
+              <%= render partial: 'videos/favorites', locals: { video: @video} %>
+            </div>
           <% end %>
         </div>
 

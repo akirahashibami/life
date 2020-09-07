@@ -1,0 +1,27 @@
+<% favorites.each do |video| %>
+  <% if video.user.release_status == 1 %>
+    <div class="my-video container">
+      <div class="row">
+        <div class="col-lg-5 col-md-5 col-sm-10 col-xs-10">
+          <%= link_to video_path(video) do %>
+          <div class="video">
+            <video src="<%= rails_blob_path(video.video) %>"　width="640" height="360" type="video/mp4" allowfullscreen></video>
+          </div>
+          <% end %>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-10 col-sx-10">
+          <%= render partial: "users/attachment", locals: { user: video.user} %> <br>
+          <%= video.introduction %>
+        </div>
+      </div>
+      <div class="title-index row">
+        <%= link_to video.title, video_path(video) %>
+      </div>
+      <div class="video-status row">
+        <span id="like_<%= video.id %>"><%= render partial: 'videos/likes', locals: { video: video} %></span>
+        <%= render partial: 'videos/favorited', locals: { video: video} %>
+        <%= video.created_at %>
+      </div>
+    </div>
+  <% end %>
+<% end %>
