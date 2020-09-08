@@ -1,5 +1,8 @@
 class Video < ApplicationRecord
 
+  validates :title,           presence: true
+  validates :introduction     presence: true
+
   # ActiveStorage
   has_one_attached :video
 

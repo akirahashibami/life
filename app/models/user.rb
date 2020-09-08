@@ -4,6 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :name,      presence: true
+
   has_one_attached :profile_image
 
   has_many :videos,             dependent: :destroy
@@ -38,6 +40,5 @@ class User < ApplicationRecord
   def thumbnail
     return self.profile_image.variant(resize: '150x150').processed
   end
-
 
 end
