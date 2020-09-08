@@ -45,6 +45,9 @@
             <div id="favorite_<%= @video.id %>">
               <%= render partial: 'videos/favorites', locals: { video: @video} %>
             </div>
+            <div id="follow">
+              <%= render partial: 'users/follow', locals: { user: @video.user} %>
+            </div>
           <% end %>
         </div>
 
@@ -58,7 +61,7 @@
         <div class="comment">コメント</div>
         <!-- コメント機能 -->
         <div class="comments row">
-          <%= form_with model: [@video, @comment] do |f| %>
+          <%= form_with model: [@video, @comment], remote: true do |f| %>
           <%= f.text_area :comment, rows: 3 %>
           <%= f.submit "コメントする", class: "btn btn-primary" %>
           <% end %>

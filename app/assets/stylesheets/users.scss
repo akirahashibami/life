@@ -309,7 +309,7 @@
 }
 
 
-#follow{
+#follow-wrap{
   @include video;
 
   display: flex;
@@ -330,7 +330,8 @@
       img{
         display: block;
         margin: 0 auto;
-        width: 100%;
+        width: 80px;
+        height: 80px;
       }
       p{
         text-align: center;

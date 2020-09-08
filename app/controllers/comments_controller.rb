@@ -1,17 +1,21 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = Comment.new(comment_params)
-    @comment.user_id = current_user.id
-    @comment.video_id = params[:video_id]
+    video               = Video.find(params[:video_id])
+    @comments           = video.comments.order(id: "DESC")
+    @comment            = Comment.new(comment_params)
+    @comment.user_id    = current_user.id
+    @comment.video_id   = params[:video_id]
     @comment.save
-    redirect_back(fallback_location: videos_path)
+    # redirect_back(fallback_location: videos_path)
   end
 
   def destroy
-    comment = Comment.find_by(id: params[:id], video_id: params[:video_id])
-    comment.destroy
-    redirect_back(fallback_location: videos_path)
+    video               = Video.find(params[:video_id])
+    @comments           = video.comments.order(id: "DESC")
+    @comment = Comment.find_by(id: params[:id], video_id: params[:video_id])
+    @comment.destroy
+    # redirect_back(fallback_location: videos_path)
   end
 
   private

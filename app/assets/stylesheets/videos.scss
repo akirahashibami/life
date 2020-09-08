@@ -89,6 +89,12 @@
       #fa-icon{
         margin-right: 32px;
       }
+
+      #follow{
+        a{
+          color: #007bff;
+        }
+      }
     }
 
     .link-box{
@@ -101,13 +107,13 @@
       margin-bottom: 18px;
     }
 
-    #comments{
+    .comments{
 
       form{
         width: 100%;
 
         textarea{
-          width: 50%;
+          width: 60%;
         }
       }
     }

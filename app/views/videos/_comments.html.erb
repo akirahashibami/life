@@ -1,6 +1,8 @@
+
+
 <% @comments.each do |comment| %>
   <% if comment.user.release_status == 1 %>
-    <div class="post-comments row">
+    <div id="comment-<%= comment.id %>" class="post-comments row">
       <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
         <%= link_to user_path(comment.user) do %>
           <%= render partial: "users/attachment", locals: { user: comment.user} %>
@@ -11,7 +13,7 @@
         <%= comment.user.name %>
         <%= comment.created_at %>
         <% if comment.user == current_user %>
-        <%= link_to "コメントを削除", video_comment_path(comment.video, comment), method: :delete %>
+        <%= link_to "コメントを削除", video_comment_path(comment.video, comment), method: :delete, remote: true %>
         <% end %>
       </div>
     </div>
