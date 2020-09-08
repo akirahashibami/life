@@ -23,5 +23,5 @@ class Video < ApplicationRecord
   def thumbnail
     return self.profile_image.variant(resize: '100x100').processed
   end
-  
+
 end
