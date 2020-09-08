@@ -10,8 +10,11 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.user_id = current_user.id
-    @video.save
-    redirect_to video_path(@video)
+    if @video.save
+      redirect_to video_path(@video)
+    else
+      render :new
+    end
   end
 
   def show
@@ -32,8 +35,11 @@ class VideosController < ApplicationController
 
   def update
     @video = Video.find(params[:id])
-    @video.update(video_params)
-    redirect_to @video
+    if @video.update(video_params)
+      redirect_to @video
+    elsif
+      render :edit
+    end
   end
 
   def destroy

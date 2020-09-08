@@ -20,11 +20,6 @@
             <div class="col-lg-5 col-md-5 col-sm-10 col-sx-10">
               <%= render partial: "users/attachment", locals: { user: video.user} %> <br>
               <%= video.introduction %>
-              <% unless video.user == current_user %>
-              <div id="favorites">
-                <%= render partial: 'videos/favorites', locals: { video: video}  %>
-              </div>
-              <% end %>
             </div>
           </div>
           <div class="title-index row">
@@ -32,7 +27,9 @@
           </div>
           <div class="video-status row">
             <span id="like_<%= video.id %>"><%= render partial: 'videos/likes', locals: { video: video} %></span>
-            <span><%= render partial: 'videos/favorites', locals: { video: video} %></span>
+            <% unless video.user.id == current_user.id %>
+              <span id="favorite_<%= video.id %>"><%= render partial: 'videos/favorites', locals: { video: video} %></span>
+            <% end %>
             <%= video.created_at %>
           </div>
         </div>

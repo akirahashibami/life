@@ -1,6 +1,7 @@
 <div id="edit" class="container">
 
   <%= form_with model: @user,　method: :patch, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
 
     <div class="field　user-name">
       <p>ユーザーネーム</p>
