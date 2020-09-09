@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get "users/withdraw"        => "users#withdraw"
   get "users/:id/favorites"       => "users#favorites", as: "users_favorites"
 
+  # 新規会員登録の時のルーティングエラーを修正
+  get '/users', to: redirect("/users/sign_up")
+
   resources :users,           only: [:show, :edit, :update, :destroy] do
     resource :relationships,  only: [:create, :destroy]
       get :follows,   on: :member

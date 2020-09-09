@@ -24,6 +24,13 @@
 
 /* ================================================= */
 
+#error_explanation{
+  margin-bottom: 24px;
+  .error_message{
+    color: red;
+  }
+}
+
 #index{
   @include video;
 }
