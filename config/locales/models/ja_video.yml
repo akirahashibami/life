@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    models:
+      video: 動画
+    attributes:
+      video:
+        video: 動画
+        title: タイトル
+        introduction: 動画の説明
