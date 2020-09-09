@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
   validates :name,      presence: true
-  
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
@@ -13,6 +13,9 @@ class User < ApplicationRecord
   has_many :comments,           dependent: :destroy
   has_many :favorites,          dependent: :destroy
   has_many :likes,              dependent: :destroy
+  has_many :room_messages,      dependent: :destroy
+  has_many :room_videos,        dependent: :destroy
+  has_many :room_users,         dependent: :destroy
 
   # ユーザーのお気に入りした動画を取得する
   # 下記はfavoritesを通してvideoから情報を集めている

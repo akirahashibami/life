@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
@@ -29,5 +30,13 @@ Rails.application.routes.draw do
     resource  :favorites,  only: [:create, :destroy]
     resources :comments,   only: [:create, :destroy]
   end
+
+  # ルーム機能
+  resources   :rooms
+  resource    :room_messages, only: [:create, :destroy]
+  resources   :room_videos,   only: [:create, :destroy]
+
+  get   'room_signin/:id', to:  'rooms#room_signin',   as: 'room_signin'
+  post  'room_signin/:id', to:  'rooms#authenticate'
 
 end

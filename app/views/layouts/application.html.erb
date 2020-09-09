@@ -28,6 +28,9 @@
               <li><%= link_to "Top", root_path %></li>
               <li><%= link_to "マイページ", user_path(current_user) %></li>
               <li><%= link_to "ムービー 一覧", videos_path %></li>
+              <li><%= link_to "グループルーム作成", new_room_path %></li>
+              <li><%= link_to "グループルーム一覧", rooms_path %></li>
+              <li></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             </ul>
           </div>
