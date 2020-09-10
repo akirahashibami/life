@@ -1,0 +1,11 @@
+<div id="new">
+  <%= form_with model: @room, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+
+  <%= f.label :"ルーム名" %>
+  <%= f.text_field :room_name %>
+
+  <%= f.submit %>
+
+  <% end %>
+</div>

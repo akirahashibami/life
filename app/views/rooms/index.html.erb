@@ -1,0 +1,10 @@
+<div id="index">
+
+  <h3>グループルーム</h3>
+
+  <% @rooms.each do |room| %>
+  <ul>
+    <li><%= link_to room.room_name, room_path(room.id) %></li>
+  </ul>
+  <% end %>
+</div>
