@@ -1,2 +1,8 @@
-<h1>Rooms#show</h1>
-<p>Find me in app/views/rooms/show.html.erb</p>
+<h3><%= @room.room_name %></h3>
+<%= link_to "メンバー編集", edit_room_path(@room) %>
+
+<div class="menber">
+  <% @room_menber.each do |menber| %>
+     <p><%= menber.name %></p>
+  <% end %>
+</div>

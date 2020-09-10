@@ -35,8 +35,6 @@ Rails.application.routes.draw do
   resources   :rooms
   resource    :room_messages, only: [:create, :destroy]
   resources   :room_videos,   only: [:create, :destroy]
-
-  get   'room_signin/:id', to:  'rooms#room_signin',   as: 'room_signin'
-  post  'room_signin/:id', to:  'rooms#authenticate'
+  resource    :room_user,     only: [:create, :destroy]
 
 end

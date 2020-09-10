@@ -17,6 +17,8 @@ class User < ApplicationRecord
   has_many :room_videos,        dependent: :destroy
   has_many :room_users,         dependent: :destroy
 
+  has_many :room, through: :room_users
+
   # ユーザーのお気に入りした動画を取得する
   # 下記はfavoritesを通してvideoから情報を集めている
   has_many :favorites_videos,   dependent: :destroy,  through: :favorites,  source: :video
