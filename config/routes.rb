@@ -32,9 +32,10 @@ Rails.application.routes.draw do
   end
 
   # ルーム機能
-  resources   :rooms
-  resource    :room_messages, only: [:create, :destroy]
-  resources   :room_videos,   only: [:create, :destroy]
-  resource    :room_user,     only: [:create, :destroy]
+  resources   :rooms do
+    resources   :room_messages, only: [:create, :destroy]
+    resources   :room_videos,   only: [:create, :destroy]
+    resource    :room_user,     only: [:create, :destroy]
+  end
 
 end

@@ -1,9 +1,5 @@
 class RoomsController < ApplicationController
 
-  def set_room
-    @room = Room.find(params[:id])
-  end
-
   def new
     @room = Room.new
     @roomusers = RoomUser.new
@@ -11,8 +7,9 @@ class RoomsController < ApplicationController
 
   def create
     @room = Room.new(room_params)
+    @room.owner_id = current_user.id
       if @room.save
-        RoomUser.create(room_id: @room.id, user_id: current_user.id, owner_id: current_user.id)
+        RoomUser.create(room_id: @room.id, user_id: current_user.id)
         redirect_to room_path(@room)
       else
         render :new
@@ -26,7 +23,11 @@ class RoomsController < ApplicationController
 
   def show
     set_room
-    @room_menber = @room.user
+    @room_menber      = @room.user
+    @room_message     = RoomMessage.new
+    @room_messages    = @room.room_messages.order(id: "DESC")
+    @room_video       = RoomVideo.new
+    @room_videos      = @room.room_videos.all
   end
 
   def edit
@@ -43,6 +44,10 @@ class RoomsController < ApplicationController
   end
 
   private
+
+  def set_room
+    @room = Room.find(params[:id])
+  end
 
   def room_params
     params.require(:room).permit(:room_name, :room_image)

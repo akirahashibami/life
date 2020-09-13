@@ -20,7 +20,7 @@
       <div class="video-status row">
         <span id="like_<%= video.id %>"><%= render partial: 'videos/likes', locals: { video: video} %></span>
         <%= render partial: 'videos/favorited', locals: { video: video} %>
-        <%= video.created_at %>
+        <%= video.created_at.to_s(:datetime_jp) %>
       </div>
     </div>
   <% end %>

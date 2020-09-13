@@ -1,0 +1,22 @@
+<% @room_messages.each do |message| %>
+  <div class="message-user col-lg-1 col-md-1 col-sm-2 col-xs-2">
+    <%= link_to user_path(message.user) do %>
+      <%= render partial: "users/attachment", locals: { user: message.user} %> <br>
+    <% end %>
+  </div>
+  <div class="message-content col-lg-7 col-md-7 col-sm-5 col-xs-5">
+    <span><%= message.user.name %></span> <br>
+    <p><%= message.message %></p>
+  </div>
+  <div class="message-info col-lg-3 col-md-3 col-sm-3 col-xs-3">
+    <p>
+      <%= message.created_at.to_s(:datetime_jp) %>
+      <% if message.user == current_user %>
+        <%= link_to room_room_message_path(message.room, message), method: :delete do %>
+          <i class="trash fas fa-trash-alt" style="color: red;"></i>
+        <% end %>
+    </p>
+    <% end %>
+  </div>
+  <div class="col-lg-1 col-md-1 col-sm-2 col-xs-2"></div>
+<% end %>

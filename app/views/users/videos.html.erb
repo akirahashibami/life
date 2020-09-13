@@ -30,7 +30,7 @@
             <% unless video.user.id == current_user.id %>
               <span id="favorite_<%= video.id %>"><%= render partial: 'videos/favorites', locals: { video: video} %></span>
             <% end %>
-            <%= video.created_at %>
+            <%= video.created_at.to_s(:datetime_jp) %>
           </div>
         </div>
         <% end %>
