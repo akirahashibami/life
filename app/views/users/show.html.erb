@@ -55,7 +55,7 @@
         <div class="link-box">
           <span><%= video.title %></span>
           <span><%= video.user.name %></span>
-          <span><%= video.created_at %></span>
+          <span><%= video.created_at.to_s(:datetime_jp) %></span>
         </div>
         <% end %>
       </div>
@@ -79,7 +79,7 @@
         <div class="link-box">
           <span><%= video.title %></span>
           <span><%= video.user.name %></span>
-          <span><%= video.created_at %></span>
+          <span><%= video.created_at.to_s(:datetime_jp) %></span>
         </div>
         <% end %>
       </div>

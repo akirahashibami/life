@@ -23,7 +23,7 @@
                 <div class="video-data col-lx-9 col-md-9 col-sm-12 col-xs-12">
                   <%= video.title %> <br>
                   <%= video.user.name %>
-                  <%= video.created_at %>
+                  <%= video.created_at.to_s(:datetime_jp) %>
                   <!-- いいねとかが入ります -->
                 </div>
               </div>
