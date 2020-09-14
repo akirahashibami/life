@@ -1,0 +1,1 @@
+$('#favorite_<%= @video.id %>').html("<%= j(render partial: 'videos/favorites', locals: { video: @video}) %>")

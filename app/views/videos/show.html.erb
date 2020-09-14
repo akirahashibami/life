@@ -1,0 +1,79 @@
+<div id="show">
+  <%= render partial: 'users/user_details', locals: { user: @user }  %>
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xl-11 col-md-11 col-sm-11 col-xs-11">
+        <% if @video.video.attached? %>
+
+        <div class="row">
+          <div class="video">
+            <video src="<%= rails_blob_path(@video.video) %>" type="video/mp4" controls></video>
+          </div>
+        </div>
+
+        <div class="info-box row">
+            <div class="user-image col-lg-2 col-md-2 col-sm-2 col-xs-2">
+              <%= link_to user_path(@video.user) do %>
+                <%= render partial: "users/attachment", locals: { user: @video.user} %> <br>
+                <p><%= @video.user.name %></p>
+              <% end %>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6"></div>
+            <div class="created col-lg-2 col-md-2 col-sm-4 col-xs-4">
+              <%= @video.created_at.to_s(:datetime_jp) %>
+            </div>
+        </div>
+
+        <div class="title-box row">
+          <div class="title">
+            <%= @video.title %>
+          </div>
+        </div>
+
+        <div class="introduction row">
+          <%= @video.introduction %>
+        </div>
+
+        <!-- いいねやPV数 -->
+        <div id="favorites" class="row">
+          <div id="like_<%= @video.id %>">
+            <%= render partial: 'videos/likes', locals: { video: @video} %>
+          </div>
+          <% unless @video.user == current_user %>
+            <div id="favorite_<%= @video.id %>">
+              <%= render partial: 'videos/favorites', locals: { video: @video} %>
+            </div>
+            <div id="follow">
+              <%= render partial: 'users/follow', locals: { user: @video.user} %>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="link-box">
+          <% if @video.user == current_user %>
+          <%= link_to "編集する", edit_video_path(@video), class: "btn btn-success" %>
+          <%= link_to "動画の削除", video_path(@video), method: :delete, class: "btn btn-danger" %>
+          <% end %>
+        </div>
+
+        <div class="comment">コメント</div>
+        <!-- コメント機能 -->
+        <div class="comments row">
+          <%= form_with model: [@video, @comment], remote: true do |f| %>
+          <%= f.text_area :comment, rows: 3 %>
+          <%= f.submit "コメントする", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+
+        <!-- 投稿コメント一覧 -->
+        <div id="comments">
+          <%= render partial: 'videos/comments', locals: { comments: @comments} %>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

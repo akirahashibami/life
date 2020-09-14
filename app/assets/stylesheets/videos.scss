@@ -1,0 +1,225 @@
+// Place all the styles related to the Videos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@mixin video {
+  .video{
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%;
+    position: relative;
+
+    video{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+
+#index{
+  @include video;
+  display: flex;
+
+  h2{
+    margin-bottom: 32px;
+    color: #777;
+  }
+
+  .container{
+    a{
+      text-decoration: none;
+      color: #777;
+      font-size: .8rem
+    }
+
+    .video-image{
+      width: 100%;
+      padding:  0;
+      padding-top: 5%;
+    }
+    .likes{
+      font-size: .8rem;
+    }
+  }
+}
+
+#show{
+  @include video;
+  display: flex;
+
+  .container{
+    padding-top: 24px;
+
+      .info-box{
+        margin-top: 10px;
+
+        p{
+          text-align: center;
+          color: #777;
+        }
+      }
+
+      .title{
+        margin: 24px 0;
+        font-size: 2rem;
+        color: #666;
+        font-weight: bold;
+      }
+
+    .introduction{
+      margin-bottom: 48px;
+      font-size: 1.2rem;
+      color: #333;
+    }
+
+    #favorites{
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      padding: 8px 0;
+      margin-bottom: 36px;
+
+      p{
+        margin: 0;
+      }
+
+      #fa-icon{
+        margin-right: 32px;
+      }
+
+      #follow{
+        a{
+          color: #007bff;
+        }
+      }
+    }
+
+    .link-box{
+      padding-bottom: 28px;
+    }
+
+    .comment{
+      font-size: 1.6rem;
+      color: #666;
+      margin-bottom: 18px;
+    }
+
+    .comments{
+
+      form{
+        width: 100%;
+
+        textarea{
+          width: 60%;
+        }
+      }
+    }
+
+    .post-comments{
+      margin: 32px 0;
+      padding-bottom: 12px;
+      border-bottom: 1px solid #ccc;
+      img{
+        width: 80px;
+        height: 80px;
+      }
+    }
+  }
+}
+
+
+#video_edit{
+  @include video;
+
+  .container{
+
+    h2{
+      color: #777;
+      margin-bottom: 64px;
+    }
+
+    .upload{
+      margin-left: 15%;
+
+      form{
+        width: 80%;
+        padding: 4em 1.5em 0 1.5em;
+        background-color: #fafafa;
+        border-radius: 8px;
+        box-shadow: 0 0 8px gray;
+
+        .file_field{
+          width: 100%;
+          margin-bottom: 12px;
+        }
+
+        .table{
+
+          input{
+            width: 100%;
+          }
+
+          textarea{
+            width: 100%;
+            height: 150px;
+          }
+        }
+      }
+    }
+
+    .link-box{
+      text-align: center;
+      margin: 24px auto;
+    }
+  }
+}
+
+
+#new{
+
+  .container{
+
+    h2{
+      color: #777;
+      margin-bottom: 64px;
+    }
+
+    .upload{
+      margin-left: 15%;
+
+      form{
+        width: 80%;
+        padding: 4em 1.5em 0 1.5em;
+        background-color: #fafafa;
+        border-radius: 8px;
+        box-shadow: 0 0 8px gray;
+
+        .file_field{
+          width: 100%;
+          margin-bottom: 12px;
+        }
+
+
+        .table{
+
+          input{
+            width: 100%;
+          }
+
+          textarea{
+            width: 100%;
+            height: 150px;
+          }
+        }
+      }
+    }
+
+    .link-box{
+      text-align: center;
+      margin: 24px auto;
+    }
+  }
+}

@@ -1,0 +1,9 @@
+<div id="edit">
+  <div class="container">
+    <h3>ルームメンバーの追加/除外</h3>
+    <%= form_with(model: @room, url: room_path(@room), room_id: @room.id, local: true) do |f| %>
+      <%= f.collection_check_boxes(:user_ids, @users, :id, :name)%>
+      <%= f.submit %>
+    <% end %>
+  </div>
+</div>

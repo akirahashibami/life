@@ -1,0 +1,13 @@
+<div id="fa-icon">
+<% if video.liked_by?(current_user) %>
+  <%= link_to video_likes_path(video.id), method: :delete, remote: true do %>
+    <%= icon('fas', 'heart') %>
+  <% end %>
+  <%= video.likes.count %>
+<% else %>
+  <%= link_to video_likes_path(video.id), method: :post, remote: true do %>
+    <%= icon('far', 'heart') %>
+  <% end %>
+  <%= video.likes.count %>
+<% end %>
+</div>

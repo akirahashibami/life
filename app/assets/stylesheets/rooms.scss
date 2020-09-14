@@ -1,0 +1,85 @@
+// Place all the styles related to the Rooms controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#show{
+  .container{
+    padding-top: 0;
+
+    h2{
+      margin-bottom: 36px;
+    }
+
+    .menbers{
+      margin-bottom: 32px;
+
+      .menber{
+        padding: 0;
+
+        img{
+          width: 70px;
+          height: 70px;
+        }
+      }
+    }
+
+    #room-messages{
+      .message-user{
+        padding: 0;
+        a{
+          margin: 0 auto;
+          display: inline-block;
+          img{
+            width: 100%;
+            max-width: 90px;
+            max-height: 90px;
+          }
+          p{
+            font-size: 0.6rem;
+            text-align: center;
+          }
+        }
+      }
+      .message-content{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        display: inline-block;
+
+        span{
+          font-size: .5rem;
+          margin-bottom: 3px;
+          color: #666;
+        }
+
+        p{
+          margin: 0;
+          padding: 10px;
+          font-size: 0.8rem;
+          border-radius: 5px;
+          background-color: #fff;
+          display: inline-block;
+        }
+      }
+      .message-info{
+        display: flex;
+        align-items: flex-end;
+
+        p{
+          font-size: .8rem;
+          i{
+            font-size: 1.1rem;
+          }
+        }
+      }
+    }
+    .form_field{
+      margin-bottom: 32px;
+
+      textarea{
+        width: 80%;
+      }
+    }
+  }
+}

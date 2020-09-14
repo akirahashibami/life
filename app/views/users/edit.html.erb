@@ -1,0 +1,45 @@
+<div id="edit" class="container">
+
+  <%= form_with model: @user,　method: :patch, local: true do |f| %>
+  <%= render 'layouts/error_messages', model: f.object %>
+
+    <div class="field　user-name">
+      <p>ユーザーネーム</p>
+      <%= f.text_field :name %>
+    </div>
+
+    <div class="field user-image">
+      <p>プロフィールイメージ</p>
+      <%= f.file_field :profile_image %>
+    </div>
+
+    <div class="field user-introduction">
+      <p>ユーザー紹介</p>
+      <%= f.text_area :introduction %>
+    </div>
+
+    <div class="field user-release_status">
+      <h5>公開ステータス</h5>
+      <p class="status_menu">※非公開にすると、ユーザーの情報や動画は他のユーザーからは見えないようになります</p>
+      <div class="radio_button">
+        <label><%= f.radio_button :release_status, 1 %> 公開</label>
+        <label><%= f.radio_button :release_status, 0 %> 非公開</label>
+      </div>
+    </div>
+
+    <div class="actions form-btn">
+      <%= f.submit "更新", class: "btn btn-success" %>
+    </div>
+
+    <div class="user-delete">
+      <%= link_to "キャンセル", user_path(@user), class: "btn btn-secondary" %>
+      <%= link_to users_withdraw_path, class: "withdraw btn btn-danger" do %>
+        <p>アカウント削除</p>
+      <% end %>
+    </div>
+
+  <% end %>
+
+
+
+</div>

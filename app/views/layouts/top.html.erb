@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+    <title>LifeLog</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <div id="wrapper">
+      <header>
+        <div class="cp_fullscreenmenu">
+        	<input class="toggle" type="checkbox" />
+        	<div class="hamburger"><span></span></div>
+        	<div class="menu">
+            <% if user_signed_in? %>
+            <div>
+              <ul>
+                <li><%= link_to "Top", root_path %></li>
+                <li><%= link_to "マイページ", user_path(current_user) %></li>
+                <li><%= link_to "ムービー 一覧", videos_path %></li>
+                <li><%= link_to "グループルーム作成", new_room_path %></li>
+                <li><%= link_to "グループルーム一覧", rooms_path %></li>
+                <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
+              </ul>
+            </div>
+            <% else %>
+            <div>
+              <ul>
+                <li><%= link_to "Top", root_path %></li>
+                <li><%= link_to "L/Logを始める", new_user_registration_path %></li>
+                <li><%= link_to "ログイン", new_user_session_path %></li>
+                <li><%= link_to "このサイトについて", variouses_about_path %></li>
+              </ul>
+            </div>
+            <% end %>
+        	</div>
+        </div>
+      </header>
+
+        <%= yield %>
+
+      <footer>
+        <section>
+          <h5>Copyright © akira hahsibami</h5>
+        </section>
+      </footer>
+      </div>
+  </body>
+
+</html>

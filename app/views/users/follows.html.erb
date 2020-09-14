@@ -1,0 +1,28 @@
+<div id="follow-wrap">
+  <%= render partial: 'users/user_details', locals: { user: @current_user} %>
+
+  <div class="container">
+    <div class="row">
+      <h2>フォローユーザー</h2>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <% @users.each do |user| %>
+        <div class="row">
+          <div class="col-lg-3 col-md-3 col-sm-5">
+            <%= link_to user_path(user) do %>
+            <%= render partial: "users/attachment", locals: { user: user} %>
+            <p><%= user.name %></p>
+            <% end %>
+          </div>
+          <div class="col-lg-8 col-md-8 col-sm-7">
+            <p class="introduction"><%= user.introduction %></p>
+          </div>
+
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

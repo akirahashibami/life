@@ -1,0 +1,9 @@
+<% unless user == current_user %>
+  <div class="row">
+    <% if user.followed_by?(current_user) %>
+      <p><%= link_to "フォロー中！", user_relationships_path(user), method: :delete, remote: true %></p>
+    <% else %>
+      <p><%= link_to "フォローする！", user_relationships_path(user) , method: :post, remote: true %></p>
+    <% end %>
+  </div>
+<% end %>

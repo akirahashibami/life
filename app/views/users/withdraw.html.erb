@@ -1,0 +1,14 @@
+<div id="withdraw">
+  <div class="withdraw-message">
+    <p>
+      <span>※　注意！！　※</span> <br>
+      削除すると今まで投稿した全ての動画、コメント、お気に入りや<br>
+      全てのアカウント情報も削除されます。<br>
+      本当に削除しますか？
+    </p>
+  </div>
+  <div class="link-box">
+    <%= link_to "戻る", edit_user_path(@user), class: "btn btn-info" %>
+    <%= link_to "削除", user_path(@user), method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>

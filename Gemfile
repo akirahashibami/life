@@ -24,11 +24,13 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+
+# パスワードを作る
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use ActiveStorage variant
-# gem 'mini_magick', '~> 4.8'
+gem 'mini_magick', '~> 4.8'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -49,6 +51,11 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-byebug'
+
+  gem 'capistrano'
+  gem 'capistrano-rails'
+  gem 'capistrano3-puma'
+  gem 'capistrano-rbenv'
 end
 
 group :test do
@@ -69,9 +76,9 @@ gem 'jquery-rails'
 # ページング機能
 gem 'kaminari', '~> 1.2.1'
 
-#  画像投稿用
-gem 'refile', require: 'refile/rails', github: 'manfe/refile'
-gem 'refile-mini_magick'
+# 画像投稿用
+# gem 'refile', require: 'refile/rails', github: 'manfe/refile'
+# gem 'refile-mini_magick'
 
 # 環境変数管理
 gem 'dotenv-rails'
@@ -84,4 +91,12 @@ gem 'rubocop'
 gem 'rubocop-rails'
 
 # フォントオーサム
-gem 'font-awesome-rails'
+gem 'font-awesome-sass'
+
+# エラーメッセージ日本語化
+gem 'rails-i18n'
+
+# デプロイを行う
+group :production do
+  gem 'mysql2'
+end
