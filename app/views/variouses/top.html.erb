@@ -19,7 +19,7 @@
   <div class="video">
     <% if @video %>
       <video src="<%= rails_blob_path(@video.video) %>" type="video/mp4" width="640" height="360" muted controls></video>
-    <% else %>
+    <% elsif %>
       <%= image_tag asset_path('guitar-5531027_640.jpg') %>
     <% end %>
   </div>
