@@ -1,9 +1,19 @@
-<div id="edit">
+<div id="room-edit">
   <div class="container">
     <h3>ルームメンバーの追加/除外</h3>
+    <p>メンバーは相互にフォローしているユーザーが対象です。</p>
     <%= form_with(model: @room, url: room_path(@room), room_id: @room.id, local: true) do |f| %>
-      <%= f.collection_check_boxes(:user_ids, @users, :id, :name)%>
-      <%= f.submit %>
+      <% if @users.blank? %>
+        <p class="not-user">相互にフォローしているユーザーはいません。</p>
+      <% else %>
+        <div class="checkbox-list">
+          <%= f.collection_check_boxes(:user_ids, @users, :id, :name)%>
+        </div>
+        <div class="update-btn">
+          <%= f.submit class: "btn btn-success" %>
+        </div>
+      <% end %>
+      <span><%= link_to "戻る", room_path(@room), class: "btn btn-primary" %></span>
     <% end %>
   </div>
 </div>

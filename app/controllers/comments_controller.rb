@@ -6,10 +6,7 @@ class CommentsController < ApplicationController
     @comment            = Comment.new(comment_params)
     @comment.user_id    = current_user.id
     @comment.video_id   = params[:video_id]
-    if @comment.save
-    else
-      redirect_back(fallback_location: videos_path)
-    end
+    @comment.save
   end
 
   def destroy

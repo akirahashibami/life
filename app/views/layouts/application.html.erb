@@ -15,7 +15,7 @@
     <header>
 
         <%= link_to root_path do  %>
-          <%= image_tag('1_Primary_logo_on_transparent_308x65.png') %>
+          <%= image_tag asset_path('1_Primary_logo_on_transparent_308x65.png') %>
         <% end %>
 
       <div class="cp_fullscreenmenu">
@@ -30,7 +30,6 @@
               <li><%= link_to "ムービー 一覧", videos_path %></li>
               <li><%= link_to "グループルーム作成", new_room_path %></li>
               <li><%= link_to "グループルーム一覧", rooms_path %></li>
-              <li></li>
               <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></li>
             </ul>
           </div>
@@ -54,7 +53,7 @@
 
     <footer>
       <section>
-        <h5>Copyright © akira hahsibami</h5>
+        <h5>Copyright © katsuya kitayama</h5>
       </section>
     </footer>
   </div>
