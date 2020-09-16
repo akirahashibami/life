@@ -60,11 +60,9 @@
 
         <div class="comment">コメント</div>
         <!-- コメント機能 -->
-        <div class="comments row">
-          <%= form_with model: [@video, @comment], remote: true do |f| %>
-          <%= f.text_area :comment, rows: 3 %>
-          <%= f.submit "コメントする", class: "btn btn-primary" %>
-          <% end %>
+        <div id="error-explanation"></div>
+        <div id="form-area" class="comments row">
+          <%= render partial: 'videos/comments_form', locals: { video: @video, comment: @comment} %>
         </div>
 
         <!-- 投稿コメント一覧 -->
