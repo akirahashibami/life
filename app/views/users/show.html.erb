@@ -32,9 +32,10 @@
       <%= render partial: 'users/follow', locals: { user: @user} %>
     </div>
 
-    <div class="user-edit row">
+    <div class="current-user-contents row">
       <% if @user == current_user %>
-      <%= link_to "ユーザー編集ページへ", edit_user_path(@user) %>
+        <%= link_to "新規動画の投稿", new_video_path, class: "btn btn-success" %>
+        <%= link_to "ユーザー編集ページへ", edit_user_path(@user), class: "btn btn-primary" %>
       <% end %>
     </div>
 

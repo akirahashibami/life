@@ -5,8 +5,10 @@ class RoomMessagesController < ApplicationController
     @room_message             = RoomMessage.new(room_message_params)
     @room_message.user_id     = current_user.id
     @room_message.room_id     = params[:room_id]
-    @room_message.save
-    redirect_back(fallback_location: rooms_path)
+    if @room_message.save
+    else
+      redirect_back(fallback_location: rooms_path)
+    end
   end
 
   def destroy

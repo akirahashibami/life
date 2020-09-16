@@ -17,3 +17,12 @@
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+
+$(document).on("ready turbolinks:load",function(){
+  var $textarea = $('#textarea');
+  var lineHeight = parseInt($textarea.css('lineHeight'));
+  $textarea.on('input', function(e){
+    var lines = ($(this).var() + '\n').match(/\n/g).length;
+    $(this).height(lineHeight * lines);
+  });
+});
