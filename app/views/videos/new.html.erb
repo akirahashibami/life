@@ -7,10 +7,10 @@
 
     <div class="upload row">
       <%= form_with model: @video, local: true do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
-      <%= f.file_field :video, multiple: true, direct_upload: true, class: "file_field" %> <br>
       <table class="table table-borderless col-lg-10 col-md-10 col-sm-11">
         <tbody>
+          <%= render 'layouts/error_messages', model: f.object %>
+          <%= f.file_field :video, class: "file_field" %> <br>
           <tr>
             <td>タイトル</td>
             <td><%= f.text_field :title %></td>

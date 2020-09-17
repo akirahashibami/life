@@ -1,43 +1,45 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
-  <div class="col-md-6 mx-auto">
-    <div class="form-inline">
-      <span>
-        <%= link_to user_path(visitor) do %>
-          <%= render partial: 'users/attachment', locals: {user: visitor} %>
-          <strong><%= visitor.name %></strong>
-        <% end %>
-          'さんが'
 
-          <% case notification.action %>
+<div id="index" class="col-md-6 mx-auto">
+  <div class="form-inline">
+    <span>
+      <%= link_to user_path(visitor) do %>
+      <%= render partial: 'users/attachment', locals: {user: visitor} %>
+      <strong><%= visitor.name %></strong>
+      <% end %>
+      さんが
 
-            <% when 'follow' then %>
-              <%= "あなたをフォローしました" %>
+      <% case notification.action
+      when 'follow' then %>
+      <%= "あなたをフォローしました" %>
 
-            <% when 'like' then %>
-                <%= link_to 'あなたの投稿', notification.video, style: "font-weight: bold" %>
-                "にいいねしました"
 
-            <% when 'comment' then %>
-              <% if notification.video.user_id == visited.id %>
-                <%= link_to "あなたの投稿", notification.video, style: "font-weight: bold;" %>
-              <% else %>
-                <span>
-                  <%= link_to video_path(notification.video) do %>
-                    <%= render partial: 'users/attachment', locals: {user: notification.video.user} %>
-                    <strong><%= notification.video.user.name + 'さんの投稿' %></strong>
-                  <% end %>
-                </span>
-              <% end %>
-              "にコメントしました"
-              <p class="text-muted mb-0">
-                <%= Comment.find_by(id: notification.comment_id)&.commnet %>
-              </p>
+      <% when 'like' then %>
+      <%= link_to 'あなたの投稿', notification.video, style: "font-weight: bold" %>
+      にいいねしました
+
+      <% when 'comment' then %>
+        <% if notification.video.user_id == visited.id %>
+          <%= link_to "あなたの投稿", notification.video, style: "font-weight: bold;" %>
+        <% else %>
+          <span>
+          <%= link_to video_path(notification.video) do %>
+            <%= render partial: 'users/attachment', locals: {user: notification.video.user} %>
+            <strong><%= notification.video.user.name + 'さんの投稿' %></strong>
           <% end %>
-      </span>
-      <div class="small text-muted text-right">
-        <%= time_ago_in_words(notification.created_at).upcase %>
-      </div>
-      <hr>
+          </span>
+        <% end %>
+        にコメントしました
+
+      <p class="text-muted mb-0">
+        <%= Comment.find_by(id: notification.comment_id)&.comment %>
+      </p>
+      <% end %>
+    </span>
+    <div class="small text-muted text-right">
+      <%= time_ago_in_words(notification.created_at).upcase %>前
     </div>
+    <hr>
   </div>
+</div>

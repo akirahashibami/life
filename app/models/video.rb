@@ -47,8 +47,8 @@ class Video < ApplicationRecord
     # いいねされてない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
-        post_id:      id,
-        viseited_id:  user_id,
+        video_id:      id,
+        visited_id:  user_id,
         action: 'like'
       )
       # 自分の投稿に対するいいねの場合は通知済とする
@@ -67,10 +67,10 @@ class Video < ApplicationRecord
     # distinctメソッド...重複レコードを１つにまとめるためのメソッド
     # まず、投稿にコメントしているユーザーのIDリストを取得、自分のコメントは除外、重複した場合は削除する。
     temp_ids.each do |temp_id|
-      save_notificaion_comment!(current_user, comment_id, temp_id['user_id'])
+      save_notification_comment!(current_user, comment_id, temp_id['user_id'])
     end
-    # まだ誰も投稿していない場合は投稿者に通知を送る
-    save_notification_comment!(current_user, comment_id, user_id) if temp_ids.blank?
+    # 投稿者にも通知を送る
+    save_notification_comment!(current_user, comment_id, user_id)
   end
 
   def save_notification_comment!(current_user, comment_id, visited_id)
@@ -86,6 +86,19 @@ class Video < ApplicationRecord
       notification.checked = true
     end
     notification.save if notification.valid?
+  end
+
+  # フォローされた時に通知がされるメソッド
+  def create_notification_follow!(current_user)
+    # 同じ通知レコードが存在しない時だけ、レコードを作成
+    temp = Notification.where(["visitor_id = ? and Visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id:   id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
   end
 
 end

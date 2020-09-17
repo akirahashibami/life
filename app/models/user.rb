@@ -54,4 +54,17 @@ class User < ApplicationRecord
     return self.profile_image.variant(resize: '150x150').processed
   end
 
+  # フォローされた時に通知がされるメソッド
+  def create_notification_follow!(current_user)
+    # 同じ通知レコードが存在しない時だけ、レコードを作成
+    temp = Notification.where(["visitor_id = ? and Visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id:   id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
+
 end
