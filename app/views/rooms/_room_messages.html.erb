@@ -1,4 +1,4 @@
-<% @room_messages.each do |message| %>
+<% room_messages.each do |message| %>
   <div class="message-user col-lg-1 col-md-1 col-sm-2 col-xs-2">
     <%= link_to user_path(message.user) do %>
       <%= render partial: "users/attachment", locals: { user: message.user} %> <br>

@@ -13,16 +13,23 @@
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
-//= require jquery3
+//= require jquery
+//= require jquery_ujs
 //= require popper
 //= require bootstrap-sprockets
 //= require_tree .
+//= require_self
+//= require activestorage
 
-$(document).on("ready turbolinks:load",function(){
+$(document).on('turbolinks:load',function(){
+
+  // テキストエリアの欄を記入されたテキストに合わせて広げる
   var $textarea = $('#textarea');
   var lineHeight = parseInt($textarea.css('lineHeight'));
   $textarea.on('input', function(e){
-    var lines = ($(this).var() + '\n').match(/\n/g).length;
+    var lines = ($(this).val() + '\n').match(/\n/g).length;
     $(this).height(lineHeight * lines);
   });
+
+
 });
