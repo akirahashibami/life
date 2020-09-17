@@ -25,7 +25,7 @@
       <div class="form_field col-lg-5 col-md-5 col-sm-5">
         <%= form_with model: [@room, @room_message], local: true do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
-          <%= f.text_area :message, row: 3, placeholder: "メッセージ...", id: "textarea" %>
+          <%= f.text_area :message, rows: 3, placeholder: "メッセージ...", id: "textarea" %>
           <%= button_tag :type => "submit", class: "btn btn-primary" do %>
             <i class="fas fa-paper-plane"></i>
           <% end %>
