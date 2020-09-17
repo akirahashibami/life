@@ -7,6 +7,7 @@
     <div class="user-name">
       <%= user.name %>
     </div>
+    <%= link_to "通知", notifications_path %>
     <% end %>
     <div class="new-video">
       <%= link_to "動画を投稿する", new_video_path, class: "btn btn-success" %>

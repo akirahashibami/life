@@ -37,6 +37,13 @@ class User < ApplicationRecord
   has_many :followers,    through: :passive_relationships,   source: :following
   # ===========================================================
 
+
+  # 通知機能用の記述
+  # 自分からの通知
+  has_many  :active_notifications,  class_name: 'Notification',  foreign_key: 'visitor_id',  dependent: :destroy
+  # 相手からの通知
+  has_many  :passive_notifications, class_name: 'Notification',  foreign_key: 'visited_id',  dependent: :destroy
+
   # Userがfollow済みかどうか判定
   def followed_by?(user)
     passive_relationships.find_by(following_id: user.id).present?
