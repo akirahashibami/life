@@ -100,3 +100,6 @@ gem 'rails-i18n'
 group :production do
   gem 'mysql2'
 end
+
+# AWSのS3に動画を保存する
+gem 'aws-sdk-s3', require: false
