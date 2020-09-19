@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
     @comment.user_id    = current_user.id
     @comment.video_id   = params[:video_id]
     @comment.save
+    @video = @comment.video
+    @video.create_notification_comment!(current_user, @comment.id)
   end
 
   def destroy

@@ -4,6 +4,7 @@ class LikesController < ApplicationController
     @video = Video.find(params[:video_id])
     like = current_user.likes.build(video_id: params[:video_id])
     like.save
+    @video.create_notification_like!(current_user)
     # redirect_back(fallback_location: videos_path)
   end
 

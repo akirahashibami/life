@@ -8,20 +8,49 @@
       <%= user.name %>
     </div>
     <% end %>
-    <div class="new-video">
-      <%= link_to "動画を投稿する", new_video_path, class: "btn btn-success" %>
+
+    <div class="link notification">
+      <%= link_to notifications_path do %>
+        <% if unchecked_notifications.blank? %>
+          <%= icon('fas', 'bell') %>
+        <% else %>
+          <span class="fa-stack">
+            <%= icon('fas', 'bell') %>
+            <%= icon('fas', 'circle') %>
+          </span>
+        <% end %>
+      <% end %>
+      <p class="fukidashi">通知</p>
+    </div>
+    <div class="link new-video">
+      <%= link_to new_video_path do %>
+        <%= icon('fas', 'video') %>
+      <% end %>
+      <p class="fukidashi">動画を投稿</p>
     </div>
     <div class="link user-post-videos">
-      <%= link_to "投稿した動画一覧", users_videos_path(user) %>
+      <%= link_to users_videos_path(user) do %>
+        <%= icon('fas', 'film') %>
+      <% end %>
+      <p class="fukidashi">投稿した動画</p>
     </div>
     <div class="link user-fovorite-videos">
-      <%= link_to "お気に入り動画", users_favorites_path(user) %>
+      <%= link_to users_favorites_path(user) do %>
+        <%= icon('far', 'file-video') %>
+      <% end %>
+      <p class="fukidashi">お気に入り動画</p>
     </div>
     <div class="link user-follows">
-      <%= link_to "フォロー中ユーザー", follows_user_path(user) %>
+      <%= link_to follows_user_path(user) do %>
+        <%= icon('fas', 'user-plus') %>
+      <% end %>
+      <p class="fukidashi">フォロー</p>
     </div>
     <div class="link user-followers">
-      <%= link_to "フォロワーユーザー", followers_user_path(user) %>
+      <%= link_to followers_user_path(user) do %>
+        <%= icon('fas', 'users') %>
+      <% end %>
+      <p class="fukidashi">フォロワー</p>
     </div>
   </div>
 </div>

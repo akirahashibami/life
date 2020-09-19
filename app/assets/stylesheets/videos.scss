@@ -19,7 +19,6 @@
   }
 }
 
-
 #index{
   @include video;
   display: flex;
@@ -56,6 +55,12 @@
 
       .info-box{
         margin-top: 10px;
+
+        .user-image{
+          img{
+            height: auto;
+          }
+        }
 
         p{
           text-align: center;
@@ -180,6 +185,11 @@
 
 #new{
 
+    ul{
+      margin-bottom: 32px;
+      color: red;
+    }
+
   .container{
 
     h2{
@@ -192,7 +202,7 @@
 
       form{
         width: 80%;
-        padding: 4em 1.5em 0 1.5em;
+        padding: 2em 1.5em 0 1.5em;
         background-color: #fafafa;
         border-radius: 8px;
         box-shadow: 0 0 8px gray;

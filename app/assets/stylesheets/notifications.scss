@@ -1,0 +1,36 @@
+// Place all the styles related to the notifications controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#notification-index{
+  display: flex;
+}
+
+#notifications{
+  padding-bottom: 30px;
+  margin-bottom: 30px;
+  border-bottom: 1px solid #ccc;
+  span{
+    a{
+      img{
+        max-width: 60px;
+        max-height: 60px;
+        margin-right: 12px;
+      }
+
+      .like_to_video{
+        a{
+          img{
+            max-width: 40px;
+            max-height: 40px;
+          }
+        }
+      }
+    }
+    .user-comment{
+      font-size: 1.2rem;
+      padding-top: 10px;
+      margin-left: 10%;
+    }
+  }
+}

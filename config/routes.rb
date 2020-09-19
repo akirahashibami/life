@@ -38,4 +38,5 @@ Rails.application.routes.draw do
     resource    :room_user,     only: [:create, :destroy]
   end
 
+  resources   :notifications, only: :index
 end
