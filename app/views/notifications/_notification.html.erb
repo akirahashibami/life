@@ -1,7 +1,7 @@
 <% visitor = notification.visitor %>
 <% visited = notification.visited %>
 
-<div id="index" class="col-md-6 mx-auto">
+<div id="notifications">
   <div class="form-inline">
     <span>
       <%= link_to user_path(visitor) do %>
@@ -23,7 +23,7 @@
         <% if notification.video.user_id == visited.id %>
           <%= link_to "あなたの投稿", notification.video, style: "font-weight: bold;" %>
         <% else %>
-          <span>
+          <span class="like_to_video">
           <%= link_to video_path(notification.video) do %>
             <%= render partial: 'users/attachment', locals: {user: notification.video.user} %>
             <strong><%= notification.video.user.name + 'さんの投稿' %></strong>
@@ -32,8 +32,8 @@
         <% end %>
         にコメントしました
 
-      <p class="text-muted mb-0">
-        <%= Comment.find_by(id: notification.comment_id)&.comment %>
+      <p class="user-comment text-muted mb-0">
+        " <%= Comment.find_by(id: notification.comment_id)&.comment %> "
       </p>
       <% end %>
     </span>

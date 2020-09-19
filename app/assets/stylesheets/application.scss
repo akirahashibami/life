@@ -277,11 +277,92 @@ header{
 }
 
 #user-detalis{
-  width: 200px;
+
+  @mixin fukidashi-wrapper{
+    .fukidashi{
+      display: none;
+      min-width: 70px;
+      position: absolute;
+      top: 0;
+      left: 50px;
+      border-radius: 5px;
+      background: rgba(33, 33, 33, .5);
+      color: #fff;
+      text-align: center;
+      padding: 2px 10px;
+      font-size: .6rem;
+    }
+  }
+
+  @mixin fukidashi{
+    @include fukidashi-wrapper;
+    position: relative;
+
+    &:hover > .fukidashi{
+      display: inline-block;
+    }
+  }
+
+  width: 100px;
   margin-right: 5%;
 
   #details{
     margin-left: 15%;
+
+    .user-image{
+      img{
+        height: auto;
+      }
+    }
+
+    .link{
+
+      a{
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+
+        i{
+          font-size: 2rem;
+          color: #aaa;
+          margin: 12px 0;
+
+          &:hover{
+            color: #444;
+          }
+        }
+      }
+    }
+
+    .notification{
+      margin-bottom: 18px;
+      @include fukidashi;
+      .fa-circle{
+        position: absolute;
+        font-size: .3rem;
+        color: red;
+      }
+    }
+
+    .new-video{
+      @include fukidashi;
+    }
+
+    .user-post-videos{
+      @include fukidashi;
+    }
+
+    .user-fovorite-videos{
+      @include fukidashi;
+    }
+
+    .user-follows{
+      @include fukidashi;
+    }
+
+    .user-followers{
+      @include fukidashi;
+    }
 
     .user-info{
       color: #555;
@@ -294,26 +375,8 @@ header{
         padding-top: 16px;
         text-align: center;
         width: 100%;
-        font-size: 1.2rem;
+        font-size: 0.7rem;
         margin-bottom: 32px;
-      }
-    }
-
-    .new-video{
-      margin: 16px 0;
-    }
-
-    .link{
-      a{
-        padding: 4px 0;
-        display: inline-block;
-        width: 100%;
-        text-decoration: none;
-        color: #777;
-
-        &:hover{
-          background-color: #ccc;
-        }
       }
     }
   }

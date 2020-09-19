@@ -1,9 +1,17 @@
+<div id="notification-index">
+  <div>
+    <%= render partial: 'users/user_details', locals: { user: current_user }  %>
+  </div>
 
-<!-- 自分の投稿に対するいいね、コメントは通知に表示しない -->
-<% notifications = @notifications.where.not(visitor_id: current_user.id) %>
-  <% if notifications.exists? %>
-    <%= render notifications %>
-    <!-- インスタンスの数だけ notifications/_notification.html.erb が呼び出される -->
-  <% else %>
-    <p>通知はありません</p>
-  <% end %>
+  <!-- 自分の投稿に対するいいね、コメントは通知に表示しない -->
+  <div class="col-md-8 mx-auto">
+    <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
+    <% if notifications.exists? %>
+      <%= render notifications %>
+      <%= paginate notifications %>
+      <!-- インスタンスの数だけ notifications/_notification.html.erb が呼び出される -->
+    <% else %>
+      <p>通知はありません</p>
+    <% end %>
+  </div>
+</div>
