@@ -18,9 +18,7 @@
               </div>
               <div class="row">
                 <div class="video-image col-lx-3 col-md-3 col-sm-12 col-xs-12">
-                  <% unless video.user.profile_image.nil? %>
-                    <%= image_tag asset_path(video.user.profile_image) %>
-                  <% end %>
+                  <%= render partial: "users/attachment", locals: { user: video.user} %>
                 </div>
                 <div class="video-data col-lx-9 col-md-9 col-sm-12 col-xs-12">
                   <%= video.title %> <br>
