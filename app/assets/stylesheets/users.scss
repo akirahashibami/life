@@ -54,7 +54,8 @@
 
      img{
        margin: 24px 0;
-       width: 100px;
+       width: 80px;
+       height: auto;
      }
 
      .title-index{
@@ -321,13 +322,6 @@
 
   h2{
     margin-bottom: 24px;
-  }
-  .my-video{
-    .user-image{
-      img{
-        height: auto;
-      }
-    }
   }
 }
 
