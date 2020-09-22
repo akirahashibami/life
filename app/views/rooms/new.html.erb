@@ -1,11 +1,18 @@
 <div id="new">
+  <div class="container">
   <%= form_with model: @room, local: true do |f| %>
   <%= render 'layouts/error_messages', model: f.object %>
-
   <%= f.label :"ルーム名" %>
   <%= f.text_field :room_name %>
-
-  <%= f.submit %>
-
+  <%= f.submit "ルーム作成", class: "btn btn-sm btn-primary" %>
   <% end %>
+
+    <div class="room-introduction">
+    <ul>
+      <li>メンバーは後からルームの中で追加・削除できます</li>
+      <li>メンバーは、ルームを作った人だけ追加できます</li>
+      <li>追加するメンバーは相互フォローである必要があります</li>
+    </ul>
+    </div>
+  </div>
 </div>

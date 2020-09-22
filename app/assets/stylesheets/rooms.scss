@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#new{
+  .room-introduction{
+    font-size: .8rem;
+    margin: 3% 0;
+  }
+}
+
 #room-index{
   display: flex;
 
