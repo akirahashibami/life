@@ -2,12 +2,6 @@
   <div class="container">
     <h2><%= @room.room_name %></h2>
 
-    <div class="row">
-    <% if @room.owner_id == current_user.id %>
-    <%= link_to "メンバー編集", edit_room_path(@room) %>
-    <% end %>
-    </div>
-
     <div class="menbers">
       <h5>メンバー</h5>
       <div class="row">
@@ -21,11 +15,17 @@
       </div>
     </div>
 
+    <div class="add-menber row">
+    <% if @room.owner_id == current_user.id %>
+    <%= link_to "メンバー編集", edit_room_path(@room) %>
+    <% end %>
+    </div>
+
     <div class="row">
       <div class="form_field col-lg-5 col-md-5 col-sm-5">
         <%= form_with model: [@room, @room_message], local: true do |f| %>
         <%= render 'layouts/error_messages', model: f.object %>
-          <%= f.text_area :message, rows: 3, placeholder: "メッセージ...", id: "textarea" %>
+          <%= f.text_area :message, placeholder: "メッセージ...", id: "textarea" %>
           <%= button_tag :type => "submit", class: "btn btn-primary" do %>
             <i class="fas fa-paper-plane"></i>
           <% end %>
@@ -36,8 +36,8 @@
       </div>
     </div>
 
-    <div id="room-messages" class="row">
-      <%= render partial: 'rooms/room_messages', locals: { room_messages: @room_messages} %>
+    <div id="room-messages">
+      <%= render partial: 'rooms/room_messages', locals: { mixid_room_data: @mixid_room_data} %>
     </div>
   </div>
 </div>

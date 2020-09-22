@@ -2,6 +2,22 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#room-index{
+  display: flex;
+
+  .container{
+    margin: 0 3%;
+
+    li{
+      color: #777;
+
+      span{
+        margin-left: 2%;
+      }
+    }
+  }
+}
+
 #room-edit{
   width: 100%;
   height: 100vh;
@@ -95,7 +111,14 @@
       }
     }
 
+    .add-menber{
+      margin: 2% 0;
+    }
+
     #room-messages{
+      .obj{
+        margin: 2% 0;
+      }
       .message-user{
         padding: 0;
         a{

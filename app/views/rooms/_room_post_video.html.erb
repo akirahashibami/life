@@ -9,9 +9,8 @@
         <h5 class="modal-title" id="exampleModalLabel">ムービーアップロード</h5>
       </div>
       <%= form_with model: [room, room_video], local: true do |f| %>
-        <%= render 'layouts/error_messages', model: f.object %>
         <div class="modal-body">
-            <%= f.file_field :video, class: "file_field" %>
+          <%= f.file_field :room_video, class: "file_field" %>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>

@@ -1,10 +1,18 @@
-<div id="index">
+<div id="room-index">
+  <div class="user-details">
+    <%= render partial: 'users/user_details', locals: { user: current_user }  %>
+  </div>
 
-  <h3>グループルーム</h3>
-
-  <% @rooms.each do |room| %>
-  <ul>
-    <li><%= link_to room.room_name, room_path(room.id) %></li>
-  </ul>
-  <% end %>
+  <div class="container">
+    <h3>参加しているグループルーム</h3>
+    <% @rooms.each do |room| %>
+    <ul>
+      <li><%= link_to room.room_name, room_path(room.id) %>
+        <% if room.owner_id == current_user.id %>
+          <span>(ルームマスター)</span>
+        <% end %>
+      </li>
+    </ul>
+    <% end %>
+  </div>
 </div>
