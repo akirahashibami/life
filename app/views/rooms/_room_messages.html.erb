@@ -1,4 +1,4 @@
-<% mixid_room_data.each do |obj| %>
+<% room_data.each do |obj| %>
   <% if obj.kind_of?(RoomMessage) %>
     <div class="obj row">
       <div class="message-user col-lg-1 col-md-1 col-sm-2 col-xs-2">
@@ -47,3 +47,4 @@
     </div>
   <% end %>
 <% end %>
+<%= paginate room_data %>

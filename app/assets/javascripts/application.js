@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+
 //= require jquery
 //= require jquery_ujs
 //= require popper
@@ -20,8 +20,29 @@
 //= require_tree .
 //= require_self
 //= require activestorage
+//= require jquery.jscroll.min.js
 
-$(document).on('turbolinks:load',function(){
+
+
+
+$(document).ready(function(){
+
+  // ローディング中のアニメーションを制御
+  $(function(){
+    var loader = $('.loader-wrap');
+
+    $(window).on('beforeunload',function(){
+        loader.fadeIn();
+    });
+
+    $(window).on('load',function(){
+      loader.fadeOut();
+    });
+
+    $(window).on('onresize',function(){
+      loader.fadeIn();
+    });
+  });
 
   // テキストエリアの欄を記入されたテキストに合わせて広げる
   var $textarea = $('#textarea');

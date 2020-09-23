@@ -116,8 +116,11 @@
       margin-bottom: 18px;
     }
 
-    .comments{
+    nav.pagination{
+      display: none;
+    }
 
+    .comments{
       form{
         width: 100%;
 
