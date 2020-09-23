@@ -13,19 +13,6 @@
           </div>
         </div>
 
-        <div class="info-box row">
-            <div class="user-image col-lg-2 col-md-2 col-sm-2 col-xs-2">
-              <%= link_to user_path(@video.user) do %>
-                <%= render partial: "users/attachment", locals: { user: @video.user} %> <br>
-                <p><%= @video.user.name %></p>
-              <% end %>
-            </div>
-            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6"></div>
-            <div class="created col-lg-2 col-md-2 col-sm-4 col-xs-4">
-              <%= @video.created_at.to_s(:datetime_jp) %>
-            </div>
-        </div>
-
         <div class="title-box row">
           <div class="title">
             <%= @video.title %>
@@ -33,7 +20,23 @@
         </div>
 
         <div class="introduction row">
-          <%= @video.introduction %>
+          <div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+            <%= @video.introduction %>
+          </div>
+          <div class="col-lg-3 colmd-3 col-sm-3 col-xs-3">
+            <%= @video.created_at.to_s(:datetime_jp) %>
+          </div>
+        </div>
+
+        <div class="info-box row">
+            <div class="user-image col-lg-2 col-md-2 col-sm-2 col-xs-2">
+              <%= link_to user_path(@video.user) do %>
+                <%= render partial: "users/attachment", locals: { user: @video.user} %>
+            </div>
+            <div class="col-lg-8 col-md-8 col-sm-6 col-xs-6">
+              <p><%= @video.user.name %></p>
+              <% end %>
+            </div>
         </div>
 
         <!-- いいねやPV数 -->
