@@ -10,5 +10,4 @@ class RoomVideosControllerTest < ActionDispatch::IntegrationTest
     get room_videos_destroy_url
     assert_response :success
   end
-
 end

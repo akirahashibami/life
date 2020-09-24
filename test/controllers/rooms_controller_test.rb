@@ -35,5 +35,4 @@ class RoomsControllerTest < ActionDispatch::IntegrationTest
     get rooms_destroy_url
     assert_response :success
   end
-
 end

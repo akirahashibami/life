@@ -1,5 +1,4 @@
 class Comment < ApplicationRecord
-
   validates :comment, presence: true
 
   has_many  :notifications, dependent: :destroy

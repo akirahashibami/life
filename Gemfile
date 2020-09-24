@@ -55,6 +55,7 @@ group :development do
   gem 'capistrano-rails'
   gem 'capistrano3-puma'
   gem 'capistrano-rbenv'
+  gem 'rubocop-airbnb'
 end
 
 group :test do
@@ -84,7 +85,7 @@ gem 'kaminari', '~> 1.2.1'
 # 環境変数管理
 gem 'dotenv-rails'
 
-#　トラッキング機能
+# 　トラッキング機能
 gem 'impressionist'
 
 # コーディング規約監視

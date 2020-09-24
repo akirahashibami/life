@@ -1,5 +1,4 @@
 class CommentsController < ApplicationController
-
   def create
     video               = Video.find(params[:video_id])
     @comments           = video.comments.order(id: "DESC").page(params[:page]).per(8)

@@ -1,5 +1,4 @@
 class RoomsController < ApplicationController
-
   def new
     @room = Room.new
     @roomusers = RoomUser.new
@@ -8,12 +7,12 @@ class RoomsController < ApplicationController
   def create
     @room = Room.new(room_params)
     @room.owner_id = current_user.id
-      if @room.save
-        RoomUser.create(room_id: @room.id, user_id: current_user.id)
-        redirect_to room_path(@room)
-      else
-        render :new
-      end
+    if @room.save
+      RoomUser.create(room_id: @room.id, user_id: current_user.id)
+      redirect_to room_path(@room)
+    else
+      render :new
+    end
   end
 
   def index
@@ -28,7 +27,7 @@ class RoomsController < ApplicationController
     @room_messages    = @room.room_messages.where(params[:id])
     @room_video       = RoomVideo.new
     @room_videos      = @room.room_videos.where(params[:id])
-    mixid_data  = @room_messages,@room_videos
+    mixid_data = @room_messages, @room_videos
     mixid_data.flatten!
     mixid_room_data = mixid_data.sort{|a,b| b.created_at <=> a.created_at}
     @room_data = Kaminari.paginate_array(mixid_room_data).page(params[:page]).per(8)
@@ -62,7 +61,6 @@ class RoomsController < ApplicationController
   def room_user_params
     # :user_idsに常に自分のidが入るようにする
     params[:room][:user_ids].push(current_user.id)
-    params.require(:room).permit({:user_ids=>[]})
+    params.require(:room).permit({ :user_ids => [] })
   end
-
 end

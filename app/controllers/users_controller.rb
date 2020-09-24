@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
 
@@ -62,13 +61,12 @@ class UsersController < ApplicationController
   # ログイン中ユーザー以外のユーザー情報を直接編集できないようにする
   def ensure_correct_user
     user = User.find(params[:id])
-      unless user == current_user
-        redirect_back(fallback_location: user_path(current_user))
-      end
+    unless user == current_user
+      redirect_back(fallback_location: user_path(current_user))
+    end
   end
 
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image, :release_status, :deleted_status)
   end
-
 end
