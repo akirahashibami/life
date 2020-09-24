@@ -1,7 +1,8 @@
 class RoomVideosController < ApplicationController
-
   def create
-    unless params[:room_video].nil?
+    if params[:room_video].nil?
+      redirect_back(fallback_location: root_path)
+    else
       @room_video = RoomVideo.new(room_video_params)
       @room_video.user_id = current_user.id
       @room_video.room_id = params[:room_id]
@@ -10,8 +11,6 @@ class RoomVideosController < ApplicationController
       else
         redirect_back(fallback_location: root_path)
       end
-    else
-      redirect_back(fallback_location: root_path)
     end
   end
 

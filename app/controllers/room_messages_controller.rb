@@ -1,5 +1,4 @@
 class RoomMessagesController < ApplicationController
-
   def create
     @room_message             = RoomMessage.new(room_message_params)
     @room_message.user_id     = current_user.id
@@ -10,7 +9,7 @@ class RoomMessagesController < ApplicationController
   end
 
   def destroy
-    @room_message             = RoomMessage.find_by(id: params[:id], room_id: params[:room_id])
+    @room_message = RoomMessage.find_by(id: params[:id], room_id: params[:room_id])
     @room_message.destroy
     redirect_back(fallback_location: rooms_path)
   end
