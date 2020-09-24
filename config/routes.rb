@@ -13,6 +13,9 @@ Rails.application.routes.draw do
   get "users/withdraw"        => "users#withdraw"
   get "users/:id/favorites" => "users#favorites", as: "users_favorites"
 
+  # 検索機能
+  get "search" => "videos#search"
+
   # 新規会員登録の時のルーティングエラーを修正
   get '/users', to: redirect("/users/sign_up")
 

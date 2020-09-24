@@ -12,10 +12,17 @@
 
 <body>
   <div id="wrapper">
-    <header>  
+    <header>
       <%= link_to videos_path do  %>
         <%= image_tag asset_path('1_Primary_logo_on_transparent_308x65.png') %>
       <% end %>
+
+      <div id="search">
+        <%= form_tag(search_path, :method => 'get') do %>
+          <%= text_field_tag :search %>
+          <%= submit_tag '検索', :name => nil %>
+        <% end %>
+      </div>
 
       <div class="cp_fullscreenmenu">
         <input class="toggle" type="checkbox" />

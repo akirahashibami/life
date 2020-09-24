@@ -22,9 +22,6 @@
 //= require activestorage
 //= require jquery.jscroll.min.js
 
-
-
-
 $(document).ready(function(){
 
   // テキストエリアの欄を記入されたテキストに合わせて広げる

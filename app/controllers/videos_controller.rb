@@ -1,4 +1,7 @@
 class VideosController < ApplicationController
+
+  require 'miyabi'
+
   before_action :authenticate_user!
   before_action :ensure_correct_user, only: [:edit, :update]
 
@@ -9,6 +12,7 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.user_id = current_user.id
+    @video.conversion_title = @video.title.to_kanhira.to_roman
     if @video.save
       redirect_to video_path(@video)
     else
@@ -45,6 +49,23 @@ class VideosController < ApplicationController
     @video = Video.find(params[:id])
     @video.destroy
     redirect_to user_path(current_user)
+  end
+
+  def search
+    word = params[:search]
+    unless word.blank?
+      if word.is_hira? || word.is_kana?
+        conversion_word = word.to_roman
+      elsif word.is_roman?
+        conversion_word = word
+      elsif !word.is_japanese?
+        flash[:notice] = '検索ワードは日本語を入力してください'
+        redirect_back(fallback_location: root_path)
+      else
+        conversion_word = word.to_kanhira.to_roman
+      end
+    end
+    @search_video = Video.search(conversion_word)
   end
 
   private
