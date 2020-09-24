@@ -1,5 +1,4 @@
 class NotificationsController < ApplicationController
-
   def index
     # kaminariのメソッド。表示数を最大20にする
     @notifications = current_user.passive_notifications.page(params[:page]).per(20)
@@ -8,5 +7,4 @@ class NotificationsController < ApplicationController
       notification.update_attributes(checked: true)
     end
   end
-
 end

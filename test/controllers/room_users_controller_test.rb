@@ -10,5 +10,4 @@ class RoomUsersControllerTest < ActionDispatch::IntegrationTest
     get room_users_destroy_url
     assert_response :success
   end
-
 end

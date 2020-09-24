@@ -1,5 +1,4 @@
 class Video < ApplicationRecord
-
   # ActiveStorage
   has_one_attached :video
   validate :video_type
@@ -28,7 +27,7 @@ class Video < ApplicationRecord
 
   # ActiveStorage画像リサイズメソッド
   def thumbnail
-    return self.profile_image.variant(resize: '100x100').processed
+    profile_image.variant(resize: '100x100').processed
   end
 
   def video_type
@@ -39,7 +38,6 @@ class Video < ApplicationRecord
     end
   end
 
-
   # いいねした時に通知がされるメソッド
   def create_notification_like!(current_user)
     # すでにいいねされているか検索
@@ -47,8 +45,8 @@ class Video < ApplicationRecord
     # いいねされてない場合のみ、通知レコードを作成
     if temp.blank?
       notification = current_user.active_notifications.new(
-        video_id:      id,
-        visited_id:  user_id,
+        video_id: id,
+        visited_id: user_id,
         action: 'like'
       )
       # 自分の投稿に対するいいねの場合は通知済とする
@@ -76,9 +74,9 @@ class Video < ApplicationRecord
   def save_notification_comment!(current_user, comment_id, visited_id)
     # コメントは複数回投稿することが考えられるため、１つの投稿に複数回通知する
     notification = current_user.active_notifications.new(
-      video_id:     id,
-      comment_id:   comment_id,
-      visited_id:   visited_id,
+      video_id: id,
+      comment_id: comment_id,
+      visited_id: visited_id,
       action: 'comment'
     )
     # 自分の投稿に対するコメントの場合は通知済とする
@@ -91,14 +89,13 @@ class Video < ApplicationRecord
   # フォローされた時に通知がされるメソッド
   def create_notification_follow!(current_user)
     # 同じ通知レコードが存在しない時だけ、レコードを作成
-    temp = Notification.where(["visitor_id = ? and Visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    temp = Notification.where(["visitor_id = ? and Visited_id = ? and action = ? ", current_user.id, id, 'follow'])
     if temp.blank?
       notification = current_user.active_notifications.new(
-        visited_id:   id,
+        visited_id: id,
         action: 'follow'
       )
       notification.save if notification.valid?
     end
   end
-
 end

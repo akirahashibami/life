@@ -1,5 +1,4 @@
 class VariousesController < ApplicationController
-
   layout "top"
 
   def top
@@ -9,5 +8,4 @@ class VariousesController < ApplicationController
   def about
     # code
   end
-
 end

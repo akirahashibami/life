@@ -1,5 +1,4 @@
 class RelationshipsController < ApplicationController
-
   def create
     follow = current_user.active_relationships.build(follower_id: params[:user_id])
     follow.save
@@ -14,5 +13,4 @@ class RelationshipsController < ApplicationController
     @user = follow.follower
     # redirect_back(fallback_location: user_path(current_user))
   end
-
 end
