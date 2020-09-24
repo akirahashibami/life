@@ -35,16 +35,30 @@
       font-size: .8rem
     }
 
-    .video-image{
-      width: 100%;
-      padding:  0;
-      padding-top: 5%;
-      img{
-        height: auto;
+    .jscroll{
+      .pagination{
+        display: none;
       }
     }
-    .likes{
-      font-size: .8rem;
+
+    .video-box{
+      margin-bottom: 2%;
+
+      .video-image{
+        width: 100%;
+        padding:  0;
+        padding-top: 5%;
+        img{
+          height: auto;
+        }
+      }
+      .video-data{
+        padding-top: 4%;
+      }
+      .likes{
+        font-size: .8rem;
+        padding: 3% 0;
+      }
     }
   }
 }
@@ -116,8 +130,11 @@
       margin-bottom: 18px;
     }
 
-    .comments{
+    nav.pagination{
+      display: none;
+    }
 
+    .comments{
       form{
         width: 100%;
 

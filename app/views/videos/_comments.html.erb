@@ -1,4 +1,4 @@
-<% @comments.each do |comment| %>
+<% comments.each do |comment| %>
   <% if comment.user.release_status == 1 %>
     <div id="comment-<%= comment.id %>" class="post-comments row">
       <div class="col-lg-2 col-md-2 col-sm-3 col-xs-4">
@@ -17,3 +17,4 @@
     </div>
   <% end %>
 <% end %>
+<%= paginate comments %>

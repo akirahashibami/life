@@ -7,9 +7,11 @@
   <div class="col-md-8 mx-auto">
     <% notifications = @notifications.where.not(visitor_id: current_user.id) %>
     <% if notifications.exists? %>
-      <%= render notifications %>
-      <%= paginate notifications %>
+      <div class="jscroll">
+        <%= render notifications %>
+        <%= paginate notifications %>
       <!-- インスタンスの数だけ notifications/_notification.html.erb が呼び出される -->
+      </div>
     <% else %>
       <p>通知はありません</p>
     <% end %>

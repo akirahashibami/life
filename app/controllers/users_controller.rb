@@ -25,25 +25,25 @@ class UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     @current_user = current_user
-    @favorites = @user.favorites_videos
+    @favorites = @user.favorites_videos.page(params[:page]).per(5)
   end
 
   def videos
     @current_user = current_user
     @user = User.find(params[:id])
-    @user_videos = @user.videos
+    @user_videos = @user.videos.page(params[:page]).per(5)
   end
 
   def follows
     @current_user = current_user
     @user = User.find(params[:id])
-    @users = @user.followings.where(release_status: 1)
+    @users = @user.followings.where(release_status: 1).page(params[:page]).per(6)
   end
 
   def followers
     @current_user = current_user
     @user = User.find(params[:id])
-    @users = @user.followers.where(release_status: 1)
+    @users = @user.followers.where(release_status: 1).page(params[:page]).per(6)
   end
 
   def withdraw

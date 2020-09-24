@@ -12,7 +12,7 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+
 //= require jquery
 //= require jquery_ujs
 //= require popper
@@ -20,8 +20,12 @@
 //= require_tree .
 //= require_self
 //= require activestorage
+//= require jquery.jscroll.min.js
 
-$(document).on('turbolinks:load',function(){
+
+
+
+$(document).ready(function(){
 
   // テキストエリアの欄を記入されたテキストに合わせて広げる
   var $textarea = $('#textarea');

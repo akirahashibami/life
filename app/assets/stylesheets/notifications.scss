@@ -4,12 +4,21 @@
 
 #notification-index{
   display: flex;
+
+  .jscroll{
+    .jscroll-inner{
+      .pagination{
+        display: none;
+      }
+    }
+  }
 }
 
 #notifications{
   padding-bottom: 30px;
   margin-bottom: 30px;
   border-bottom: 1px solid #ccc;
+
   span{
     a{
       img{

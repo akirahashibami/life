@@ -29,8 +29,10 @@ class RoomsController < ApplicationController
     @room_videos      = @room.room_videos.where(params[:id])
     mixid_data = @room_messages, @room_videos
     mixid_data.flatten!
-    @mixid_room_data = mixid_data.sort { |a, b| b.created_at <=> a.created_at }
+    mixid_room_data = mixid_data.sort{|a,b| b.created_at <=> a.created_at}
+    @room_data = Kaminari.paginate_array(mixid_room_data).page(params[:page]).per(8)
     # sort{|f,s| f.created_at <=> s.created_at} created_atを新しい順で並べ変える
+
   end
 
   def edit
