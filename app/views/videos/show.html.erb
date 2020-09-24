@@ -41,7 +41,7 @@
 
         <!-- いいねやPV数 -->
         <div id="favorites" class="row">
-          <div id="like_<%= @video.id %>">
+          <div id="like_<%= @video.id %>" class="likes">
             <%= render partial: 'videos/likes', locals: { video: @video} %>
           </div>
           <% unless @video.user == current_user %>
