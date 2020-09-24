@@ -45,6 +45,12 @@
     color: #777;
   }
 
+  .jscroll{
+    .pagination{
+      display: none;
+    }
+  }
+
   .my-video{
      margin-bottom: 64px;
 
@@ -332,6 +338,12 @@
   display: flex;
   h2{
     color: #777;
+  }
+
+  .jscroll{
+    .pagination{
+      display: none;
+    }
   }
 
   .row{

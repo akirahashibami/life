@@ -7,8 +7,9 @@
     <div class="col-lg-12">
       <h2>お気に入り動画一覧</h2>
 
-      <div id="favorited">
+      <div id="favorited" class="jscroll">
         <%= render partial: 'videos/user_favorite_videos', locals: { favorites: @favorites } %>
+        <%= paginate @favorites %>
       </div>
 
     </div>

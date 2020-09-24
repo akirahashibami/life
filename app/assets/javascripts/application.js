@@ -27,23 +27,6 @@
 
 $(document).ready(function(){
 
-  // ローディング中のアニメーションを制御
-  $(function(){
-    var loader = $('.loader-wrap');
-
-    $(window).on('beforeunload',function(){
-        loader.fadeIn();
-    });
-
-    $(window).on('load',function(){
-      loader.fadeOut();
-    });
-
-    $(window).on('onresize',function(){
-      loader.fadeIn();
-    });
-  });
-
   // テキストエリアの欄を記入されたテキストに合わせて広げる
   var $textarea = $('#textarea');
   var lineHeight = parseInt($textarea.css('lineHeight'));

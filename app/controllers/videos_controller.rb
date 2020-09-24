@@ -25,7 +25,7 @@ class VideosController < ApplicationController
   end
 
   def index
-    @videos = Video.order(id: "DESC")
+    @videos = Video.order(id: "DESC").page(params[:page]).per(12)
     @user = current_user
   end
 
