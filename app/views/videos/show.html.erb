@@ -45,7 +45,7 @@
             <%= render partial: 'videos/likes', locals: { video: @video} %>
           </div>
           <% unless @video.user == current_user %>
-            <div id="favorite_<%= @video.id %>">
+            <div id="favorite_<%= @video.id %>" class="favo">
               <%= render partial: 'videos/favorites', locals: { video: @video} %>
             </div>
             <div id="follow">

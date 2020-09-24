@@ -108,8 +108,17 @@
       padding: 8px 0;
       margin-bottom: 36px;
 
+      .likes{
+        margin-right: 5%;
+      }
+
+      .favo{
+        width: 20%;
+        margin-top: 12px;
+      }
+
       p{
-        margin: 0;
+        margin-right: 10%;
       }
 
       .like-count{
@@ -117,6 +126,8 @@
       }
 
       #follow{
+        width: 20%;
+        margin-top: 12px;
         a{
           color: #007bff;
         }
