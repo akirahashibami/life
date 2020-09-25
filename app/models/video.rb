@@ -1,4 +1,7 @@
 class Video < ApplicationRecord
+
+  require 'miyabi'
+
   # ActiveStorage
   has_one_attached :video
   validate :video_type
@@ -98,4 +101,11 @@ class Video < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  # 検索機能
+  def self.search(search)
+    return Video.all unless search
+    Video.where(['conversion_title LIKE?', "%#{search}%"])
+  end
+
 end

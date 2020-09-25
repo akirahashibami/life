@@ -105,3 +105,6 @@ end
 
 # AWSのS3に動画を保存する
 gem 'aws-sdk-s3', require: false
+
+# ひらがな-カタカナ-漢字-ローマ字を変換
+gem 'miyabi'
