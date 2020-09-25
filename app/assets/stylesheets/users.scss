@@ -374,6 +374,29 @@
   }
 }
 
+#search{
+  @include video;
+  display: flex;
+  h2{
+    margin-bottom: 32px;
+    color: #777;
+  }
+
+  .container{
+    .row{
+      .data{
+        margin: 5% 0;
+
+        .video-image{
+          img{
+            width: 100%;
+            height: auto;
+          }
+        }
+      }
+    }
+  }
+}
 
 #withdraw{
   width: 100%;
