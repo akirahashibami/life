@@ -1,5 +1,5 @@
-$(document).on('turbolinks:load', function(){
-  $('.withdraw').click(function(){
-    alert('退会')
+$(document).ready(function(){
+  $('.delete').on("click",function(){
+    alert('ユーザー情報を削除しました。ありがとうございました。')
   });
 });
