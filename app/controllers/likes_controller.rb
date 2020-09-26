@@ -1,9 +1,12 @@
 class LikesController < ApplicationController
   def create
     @video = Video.find(params[:video_id])
-    like = current_user.likes.build(video_id: params[:video_id])
-    like.save
-    @video.create_notification_like!(current_user)
+    if Like.find_by(user: current_user, video_id: params[:video_id]) == nil
+      like = current_user.likes.build(video_id: params[:video_id])
+      like.save
+      @video.create_notification_like!(current_user)
+    else
+    end
     # redirect_back(fallback_location: videos_path)
   end
 

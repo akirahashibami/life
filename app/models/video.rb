@@ -25,7 +25,7 @@ class Video < ApplicationRecord
 
   # すでにいいねされているかどうか調べるメソッド
   def liked_by?(user)
-    likes.where(user_id: user.id).exists?
+    self.likes.exists?(user_id: user.id)
   end
 
   # ActiveStorage画像リサイズメソッド
