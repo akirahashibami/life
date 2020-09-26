@@ -9,3 +9,4 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用のパスワード
+        profile_image: プロフィールイメージ

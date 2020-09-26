@@ -8,6 +8,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_image
+  validate         :image_presence
 
   has_many :videos,             dependent: :destroy
   has_many :comments,           dependent: :destroy
@@ -50,6 +51,15 @@ class User < ApplicationRecord
   # ActiveStorage画像リサイズメソッド
   def thumbnail
     profile_image.variant(resize: '150x150').processed
+  end
+
+  def image_presence
+    if profile_image.attached?
+      if !profile_image.content_type.in?(%('profile_image/jpeg profile_image/png'))
+        errors.add(:profile_image, 'にはjpegまたはpngファイルを添付してください')
+      end
+    else
+    end
   end
 
   # フォローされた時に通知がされるメソッド
