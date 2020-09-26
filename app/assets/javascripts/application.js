@@ -25,10 +25,10 @@
 $(document).ready(function(){
 
   // テキストエリアの欄を記入されたテキストに合わせて広げる
-  let $textarea = $('#textarea');
-  let lineHeight = parseInt($textarea.css('lineHeight'));
+  var $textarea = $('#textarea');
+  var lineHeight = parseInt($textarea.css('lineHeight'));
   $textarea.on('input', function(e){
-    let lines = ($(this).val() + '\n').match(/\n/g).length;
+    var lines = ($(this).val() + '\n').match(/\n/g).length;
     $(this).height(lineHeight * lines);
   });
 
