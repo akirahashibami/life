@@ -25,13 +25,13 @@ class UsersController < ApplicationController
   def favorites
     @user = User.find(params[:id])
     @current_user = current_user
-    @favorites = @user.favorites_videos.page(params[:page]).per(5)
+    @favorites = @user.favorites_videos.page(params[:page]).per(5).includes(user: :videos)
   end
 
   def videos
     @current_user = current_user
     @user = User.find(params[:id])
-    @user_videos = @user.videos.page(params[:page]).per(5)
+    @user_videos = @user.videos.page(params[:page]).per(5).includes(:user)
   end
 
   def follows

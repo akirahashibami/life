@@ -24,11 +24,11 @@ class VideosController < ApplicationController
     @video      = Video.find(params[:id])
     @user       = current_user
     @comment    = Comment.new
-    @comments   = @video.comments.order(id: "DESC").page(params[:page]).per(8)
+    @comments   = @video.comments.order(id: "DESC").page(params[:page]).per(8).includes(:user)
   end
 
   def index
-    @videos = Video.order(id: "DESC").page(params[:page]).per(12)
+    @videos = Video.order(id: "DESC").page(params[:page]).per(12).includes(:user)
     @user = current_user
   end
 

@@ -24,9 +24,9 @@ class RoomsController < ApplicationController
     set_room
     @room_menber      = @room.user
     @room_message     = RoomMessage.new
-    @room_messages    = @room.room_messages.where(params[:id])
+    @room_messages    = @room.room_messages.where(params[:id]).includes(user: :room)
     @room_video       = RoomVideo.new
-    @room_videos      = @room.room_videos.where(params[:id])
+    @room_videos      = @room.room_videos.where(params[:id]).includes(user: :room)
     mixid_data = @room_messages, @room_videos
     mixid_data.flatten!
     mixid_room_data = mixid_data.sort{|a,b| b.created_at <=> a.created_at}
