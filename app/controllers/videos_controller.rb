@@ -69,7 +69,7 @@ class VideosController < ApplicationController
         conversion_word = word.to_kanhira.to_roman
       end
     end
-    @search_video = Video.search(conversion_word)
+    @search_video = Video.search(conversion_word).order(id: "DESC").page(params[:page]).per(12).includes(:user)
   end
 
   private

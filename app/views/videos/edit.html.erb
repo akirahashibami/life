@@ -7,14 +7,14 @@
 
     <div class="upload row">
       <%= form_with model: @video, local: true do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
-      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-        <div class="video">
-          <video src="<%= rails_blob_path(@video.video) %>" type="video/mp4" controls></video>
-        </div>
-      </div>
 
       <table class="table table-borderless col-lg-10 col-md-10 col-sm-11">
+        <%= render 'layouts/error_messages', model: f.object %>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+          <div class="video">
+            <video src="<%= rails_blob_path(@video.video) %>" type="video/mp4" controls></video>
+          </div>
+        </div>
         <tbody>
           <tr>
             <td>タイトル</td>
@@ -26,7 +26,7 @@
         </tbody>
       </table>
       <div class="link-box">
-        <%= f.submit "編集", class: "btn btn-success" %>
+        <%= f.submit "保存", class: "btn btn-success" %>
         <%= link_to "キャンセル", videos_path, class: "btn btn-secondary" %>
       </div>
       <% end %>

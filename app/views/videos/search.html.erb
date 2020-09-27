@@ -5,33 +5,36 @@
 
   <div class="container">
     <h2>検索結果</h2>
-    <div class="row">
+
       <% unless @search_video.blank? %>
-        <% @search_video.each do |video| %>
-          <% if video.user.release_status == 1 %>
-          <div class="video-box col-xl-3 col-md-3 col-xs-4 col-xs-5">
-            <%= link_to video_path(video) do %>
-            <div class="video">
-              <video src="<%= rails_blob_path(video.video) %>"　width="640" height="360" type="video/mp4" allowfullscreen></video>
-            </div>
-            <div class="data row">
-              <div class="video-image col-lx-3 col-md-3 col-sm-12 col-xs-12">
-                <%= render partial: "users/attachment", locals: { user: video.user} %>
+        <div class="jscroll">
+          <div class="row">
+          <% @search_video.each do |video| %>
+            <% if video.user.release_status == 1 %>
+            <div class="video-box col-xl-3 col-md-3 col-xs-4 col-xs-5">
+              <%= link_to video_path(video) do %>
+              <div class="video">
+                <video src="<%= rails_blob_path(video.video) %>"　width="640" height="360" type="video/mp4" allowfullscreen></video>
               </div>
-              <div class="video-data col-lx-9 col-md-9 col-sm-12 col-xs-12">
-                <strong><%= video.title %></strong> <br>
-                <%= video.user.name %>
-                <%= video.created_at.to_s(:datetime_jp) %>
-                <!-- いいねとかが入ります -->
+              <div class="data row">
+                <div class="video-image col-lx-3 col-md-3 col-sm-12 col-xs-12">
+                  <%= render partial: "users/attachment", locals: { user: video.user} %>
+                </div>
+                <div class="video-data col-lx-9 col-md-9 col-sm-12 col-xs-12">
+                  <strong><%= video.title %></strong> <br>
+                  <%= video.user.name %>
+                  <%= video.created_at.to_s(:datetime_jp) %>
+                </div>
               </div>
+              <% end %>
             </div>
             <% end %>
-          </div>
           <% end %>
-        <% end %>
+          <%= paginate @search_video %>
+          </div>
+        </div>
       <% else %>
         <p>検索結果はありません</p>
       <% end %>
-    </div>
   </div>
 </div>

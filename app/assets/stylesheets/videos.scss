@@ -19,7 +19,7 @@
   }
 }
 
-#index{
+#index,#search{
   @include video;
   display: flex;
 
@@ -186,7 +186,7 @@
 
       form{
         width: 80%;
-        padding: 4em 1.5em 0 1.5em;
+        padding: 2em 1.5em 0 1.5em;
         background-color: #fafafa;
         border-radius: 8px;
         box-shadow: 0 0 8px gray;
@@ -194,6 +194,13 @@
         .file_field{
           width: 100%;
           margin-bottom: 12px;
+        }
+
+        ul{
+          li{
+            font-weight: bold;
+            color: red;
+          }
         }
 
         .table{
