@@ -18,6 +18,8 @@ Youtubeよりも手軽で、Instagramよりももっと思い出に残せるよ�
 
 ## 設計書
 
+### ER図
+<img width="1177" alt="スクリーンショット 2020-09-27 22 09 00" src="https://user-images.githubusercontent.com/60842603/94365766-7a6bff00-010e-11eb-8b78-95f0ac4825b6.png">
 
 ### 機能一覧
 https://docs.google.com/spreadsheets/d/14TFi8kAOpiDLktZ2ulnUEtPzVRp8pghXeDiATV-1jfE/edit#gid=0
