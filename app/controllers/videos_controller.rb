@@ -12,7 +12,11 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.user_id = current_user.id
-    @video.conversion_title = @video.title.to_kanhira.to_roman
+    if @video.title.is_hira? || @video.title.is_kana?
+      @video.conversion_title = @video.title.to_roman
+    else
+      @video.conversion_title = @video.title.to_kanhira.to_roman
+    end
     if @video.save
       redirect_to video_path(@video)
     else

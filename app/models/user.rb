@@ -49,6 +49,7 @@ class User < ApplicationRecord
 
   # ActiveStorage画像リサイズメソッド
   def thumbnail
+    binding.pry
     profile_image.variant(resize: '150x150').processed
   end
 
