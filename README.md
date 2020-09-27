@@ -18,6 +18,18 @@ Youtubeよりも手軽で、Instagramよりももっと思い出に残せるよ�
 ### 主な利用シーン
 自分用の動画記録として、またグループの思い出作りとして、など。
 
+## 使用技術
+- Ruby 2.5.7
+- Ruby on Rails 5.2.4
+- MySQL 5.7.22
+- Nginx
+- Puma
+- AWS
+  - EC2
+  - RDS
+  - S3
+- Capistrano
+
 ## 設計書
 
 ### ER図
