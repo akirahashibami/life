@@ -13,13 +13,35 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  # def update
+  #   @user = User.find(params[:id])
+  #   if @user.update(user_params)
+  #     redirect_to user_path(@user)
+  #   else
+  #     render :edit
+  #   end
+  # end
+
   def update
     @user = User.find(params[:id])
-    if @user.update(user_params)
-      redirect_to user_path(@user)
-    else
-      render :edit
-    end
+    case !params[:user][:name].blank?
+      when true
+        unless params[:user][:profile_image].nil?
+          if !params[:user][:profile_image].content_type.in?(%('profile_image/jpeg profile_image/png'))
+            flash.now[:error]="・jpegまたはpngファイルを添付してください"
+            render :edit
+          else
+            @user.update(user_params)
+            redirect_to user_path(@user)
+          end
+        else
+          @user.update(user_params)
+          redirect_to user_path(@user)
+        end
+      else
+        flash.now[:error]="・ユーザーネームを入力して下さい"
+        render :edit
+      end
   end
 
   def favorites

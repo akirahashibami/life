@@ -3,7 +3,9 @@
   <%= form_with model: @user,　method: :patch, local: true do |f| %>
 
     <div class="edit_form">
-      <%= render 'layouts/error_messages', model: f.object %>
+      <div class="error">
+        <strong><%= flash[:error] %></strong>
+      </div>
       <div class="field　user-name">
         <p>ユーザーネーム</p>
         <%= f.text_field :name %>

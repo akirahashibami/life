@@ -195,6 +195,10 @@
 
   .edit_form{
     height: auto;
+    .error{
+      color: red;
+      margin-bottom: 1rem;
+    }
   }
 
   p{
@@ -205,7 +209,7 @@
     width: 50%;
     max-width: 450px;
     min-width: 350px;
-    padding: 4em 1.5em 0 1.5em;
+    padding: 2em 1.5em 0 1.5em;
     margin: 0 auto;
     background-color: #fafafa;
     border-radius: 8px;
