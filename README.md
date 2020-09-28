@@ -43,15 +43,15 @@ Youtubeよりも手軽で、Instagramよりももっと思い出に残せるよ�
 
 - ユーザー登録、ログイン機能 (devise)
 - 投稿機能
- - 動画投稿 (ActiveStorage)
- - 画像投稿 (ActiveStorage)
+  - 動画投稿 (ActiveStorage)
+  - 画像投稿 (ActiveStorage)
 - いいね機能 (Ajax)
 - コメント機能 (Ajax)
 - お気に入り機能 (Ajax)
 - フォロー機能 (Ajax)
 - グループトーク（グループルーム）機能
 - ページネーション機能 (kaminari)
- - 無限スクロール機能 (Ajax)
+  - 無限スクロール機能 (Ajax)
 - 検索機能 (miyabi)
 
 ### 機能詳細
