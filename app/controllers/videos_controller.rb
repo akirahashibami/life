@@ -12,10 +12,12 @@ class VideosController < ApplicationController
   def create
     @video = Video.new(video_params)
     @video.user_id = current_user.id
-    if @video.title.is_hira? || @video.title.is_kana?
+    if @video.title.match(/[一-龠々]/)
+      @video.conversion_title = @video.title.to_kanhira.to_roman
+    elsif @video.title.is_hira? || @video.title.is_kana?
       @video.conversion_title = @video.title.to_roman
     else
-      @video.conversion_title = @video.title.to_kanhira.to_roman
+      @video.conversion_title = @video.title
     end
     if @video.save
       redirect_to video_path(@video)
@@ -58,16 +60,14 @@ class VideosController < ApplicationController
   def search
     word = params[:search]
     unless word.blank?
-      if word.is_hira? || word.is_kana?
-        conversion_word = word.to_roman
-      elsif word.is_roman?
-        conversion_word = word
-      elsif !word.is_japanese?
-        flash[:notice] = '検索ワードは日本語を入力してください'
-        redirect_back(fallback_location: root_path)
-      else
+      if word.match(/[一-龠々]/)
         conversion_word = word.to_kanhira.to_roman
+      elsif word.is_hira? || word.is_kana?
+        conversion_word = word.to_roman
+      else
+        conversion_word = word
       end
+
     end
     @search_video = Video.search(conversion_word).order(id: "DESC").page(params[:page]).per(12).includes(:user)
   end
