@@ -19,6 +19,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "パスワードの確認入力"  %>
   </div>
 
+  <div class="barsday">
+    <%= f.select :year, year:"select_year" %>年
+    <%= f.select :month, month:"select_month" %>月
+    <%= f.select :day, day:"select_day" %>日
+  </div>
+
   <div class="actions">
     <%= f.submit "Start  L/Log" %>
   </div>
@@ -30,9 +36,6 @@
   <div class="top-page">
     <p><%= link_to "Topページへ", root_path %></p>
   </div>
-
   <% end %>
-
-
 
 </div>
